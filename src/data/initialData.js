@@ -4,7 +4,7 @@
  * Investigador: Ing. Edery Javier Rodríguez Alvarado
  */
 
-export const SPREADSHEET_ID = "1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec";
+export const SPREADSHEET_ID = import.meta.env.VITE_SPREADSHEET_ID || "1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec";
 
 export const INSTITUCIONES_IRIBARREN = [
   "Alcaldía Bolivariana de Iribarren - Dirección de Desarrollo Social",

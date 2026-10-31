@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import RedStar from '../common/RedStar';
 import MarxistTooltip from '../common/MarxistTooltip';
 import { 
@@ -12,10 +12,23 @@ import {
   Sparkles,
   GitBranch,
   Layers,
-  Award
+  Award,
+  Share2,
+  Copy,
+  Check,
+  ExternalLink
 } from 'lucide-react';
 
 export default function HomeView({ onNavigate, recordsCount }) {
+  const [copiedLink, setCopiedLink] = useState(false);
+  const shareUrl = "https://estrategiatecnologica.vercel.app/";
+  const shareTitle = "Praxis Social Iribarren ⭐ - Estrategia de Integración Tecnológica (UBV)";
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(shareUrl);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2500);
+  };
   const instruments = [
     {
       num: '1',
@@ -135,6 +148,15 @@ export default function HomeView({ onNavigate, recordsCount }) {
             >
               <span>🧠 Intérprete Dialéctico</span>
             </button>
+
+            <a
+              href="https://github.com/ejavierds/estrategiatecnologica"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-3.5 rounded-xl bg-slate-900/90 hover:bg-black text-slate-200 font-semibold text-xs border border-slate-700 transition"
+            >
+              <span>GitHub: ejavierds/estrategiatecnologica</span>
+            </a>
           </div>
 
         </div>
@@ -309,6 +331,111 @@ export default function HomeView({ onNavigate, recordsCount }) {
               <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Tarjeta de Metadatos y Difusión en Redes Sociales */}
+      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <div className="flex items-center gap-2 text-xs font-bold text-red-600 uppercase tracking-wider mb-1">
+              <Share2 className="w-4 h-4" />
+              <span>Difusión Emancipadora y Redes Sociales</span>
+            </div>
+            <h3 className="font-extrabold text-slate-900 text-lg sm:text-xl">
+              Tarjeta de Enlace Oficial para Redes Sociales
+            </h3>
+            <p className="text-xs text-slate-500">
+              Metadatos optimizados para WhatsApp, X/Twitter, Telegram, LinkedIn y Facebook con destino <span className="font-mono text-red-600 font-semibold">{shareUrl}</span>
+            </p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleCopyLink}
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition shadow-xs"
+            >
+              {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+              <span>{copiedLink ? '¡Enlace Copiado!' : 'Copiar Enlace Vercel'}</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Vista Previa de la Tarjeta OpenGraph */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          
+          <div className="lg:col-span-7 rounded-2xl overflow-hidden border border-slate-200 shadow-md bg-slate-900 group">
+            <img 
+              src="/og-image.png" 
+              alt="Banner Oficial Praxis Social Iribarren" 
+              className="w-full h-auto object-cover transform group-hover:scale-[1.02] transition-transform duration-300"
+            />
+          </div>
+
+          <div className="lg:col-span-5 space-y-4">
+            <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 space-y-2 text-xs">
+              <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">
+                Previsualización de Tarjeta (OpenGraph / Twitter)
+              </div>
+              <h4 className="font-bold text-slate-900 text-sm leading-snug">
+                Praxis Social Iribarren ⭐ | Estrategia de Integración Tecnológica
+              </h4>
+              <p className="text-slate-600 leading-relaxed text-xs">
+                Plataforma de Investigación y Diagnóstico Marxista para la Transformación de la Gestión Social y Soberanía Tecnológica en el Municipio Iribarren. Universidad Bolivariana de Venezuela (UBV).
+              </p>
+              <span className="font-mono text-[11px] text-red-600 block pt-1">
+                estrategiatecnologica.vercel.app
+              </span>
+            </div>
+
+            {/* Accesos de Compartir Directo */}
+            <div className="space-y-2">
+              <span className="text-xs font-bold text-slate-700 block">Compartir instantáneamente:</span>
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href={`https://api.whatsapp.com/send?text=${encodeURIComponent(shareTitle + " " + shareUrl)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl transition"
+                >
+                  <span>WhatsApp</span>
+                  <ExternalLink className="w-3 h-3 opacity-80" />
+                </a>
+
+                <a
+                  href={`https://t.me/share/url?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold text-xs rounded-xl transition"
+                >
+                  <span>Telegram</span>
+                  <ExternalLink className="w-3 h-3 opacity-80" />
+                </a>
+
+                <a
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-800 hover:bg-black text-white font-semibold text-xs rounded-xl transition"
+                >
+                  <span>X (Twitter)</span>
+                  <ExternalLink className="w-3 h-3 opacity-80" />
+                </a>
+
+                <a
+                  href="https://github.com/ejavierds/estrategiatecnologica"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs rounded-xl transition border border-slate-200"
+                >
+                  <span>Repo GitHub</span>
+                  <ExternalLink className="w-3 h-3 opacity-80" />
+                </a>
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </div>
 

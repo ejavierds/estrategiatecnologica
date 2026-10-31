@@ -13,7 +13,9 @@ const STORAGE_KEY_GAS_URL = 'praxis_iribarren_gas_url';
  * Obtener la URL guardada del Web App de Google Apps Script
  */
 export function getGasUrl() {
-  return localStorage.getItem(STORAGE_KEY_GAS_URL) || '';
+  const local = localStorage.getItem(STORAGE_KEY_GAS_URL);
+  if (local && local.trim().length > 0) return local.trim();
+  return (import.meta.env.VITE_GAS_API_URL || '').trim();
 }
 
 /**
