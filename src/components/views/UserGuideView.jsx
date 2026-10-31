@@ -11,15 +11,18 @@ import {
   ExternalLink,
   Layers,
   ArrowRight,
-  MessageCircle,
-  Send,
-  Phone
+  MessageCircle, 
+  Send, 
+  Phone,
+  Lock
 } from 'lucide-react';
 import RedStar from '../common/RedStar';
 
 export default function UserGuideView({ onNavigate }) {
   const whatsappUrl = "https://wa.me/584267355056?text=Hola%20Ing.%20Edery%20Rodr%C3%ADguez,%20me%20comunico%20desde%20la%20Plataforma%20de%20Praxis%20Social%20Iribarren";
   const telegramUrl = "https://t.me/+584267355056";
+  const orcidUrl = "https://orcid.org/0000-0003-1369-9036";
+  const devUrl = "https://ejavierds.vercel.app";
 
   return (
     <div className="space-y-8 max-w-5xl mx-auto animate-in fade-in duration-200">
@@ -72,7 +75,7 @@ export default function UserGuideView({ onNavigate }) {
                 <strong>📝 Instrumentos:</strong> Acceso a los 5 formularios dinámicos de recolección de datos estandarizados.
               </li>
               <li className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <strong>📊 Analítica Práxica:</strong> Dashboard estadístico con gráficos en tiempo real (Software Libre vs Privativo, Mapeo PES).
+                <strong>📊 Analítica Práxica:</strong> Dashboard estadístico con gráficos en tiempo real (Software Libre vs Privativo, Mapeo PES). <span className="text-red-700 font-semibold">(Módulo protegido con clave de seguridad investigativa: Praxis_Marx_2026)</span>.
               </li>
               <li className="p-3 bg-slate-50 rounded-xl border border-slate-100">
                 <strong>🧠 Intérprete Dialéctico:</strong> Motor cualitativo que sintetiza contradicciones y genera el análisis para el Momento III.
@@ -81,7 +84,7 @@ export default function UserGuideView({ onNavigate }) {
                 <strong>⚖️ Bases Legales:</strong> Términos de uso, marco constitucional venezolano y políticas de privacidad y soberanía de datos.
               </li>
               <li className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <strong>⚙️ Sincronización Soberana:</strong> Verificación de conexión con el repositorio central de datos.
+                <strong>⚙️ Sincronización Soberana:</strong> Verificación de conexión con el repositorio central de datos. <span className="text-red-700 font-semibold">(Acceso protegido)</span>.
               </li>
             </ul>
           </div>
@@ -157,6 +160,9 @@ export default function UserGuideView({ onNavigate }) {
               <li>
                 <strong>Explorador de Tablas y Exportación:</strong> Permite filtrar cualquier campo por palabra clave y exportar toda la base en formato JSON estructurado.
               </li>
+              <li>
+                <strong>Acceso Blindado:</strong> Protegido con la clave institucional <code className="font-mono text-red-600">Praxis_Marx_2026</code>.
+              </li>
             </ul>
           </div>
         </div>
@@ -203,7 +209,7 @@ export default function UserGuideView({ onNavigate }) {
             ¿Requieres orientación para aplicar un instrumento en tu institución?
           </h4>
           <p className="text-xs text-slate-300 leading-relaxed">
-            Comunícate directamente con el maestrante e investigador responsable <strong>Ing. Edery Javier Rodríguez Alvarado</strong> al número institucional:
+            Comunícate directamente con el maestrante e investigador responsable <strong>Ing. Edery Javier Rodríguez Alvarado</strong> al número institucional o consulta su perfil científico:
           </p>
         </div>
 
@@ -212,7 +218,8 @@ export default function UserGuideView({ onNavigate }) {
             href={whatsappUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition shadow-md hover:shadow-lg active:scale-95"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition shadow-md hover:shadow-lg active:scale-95"
+            title="WhatsApp directo con el investigador"
           >
             <MessageCircle className="w-4 h-4 fill-current" />
             <span>WhatsApp (+58 426 735 5056)</span>
@@ -222,10 +229,24 @@ export default function UserGuideView({ onNavigate }) {
             href={telegramUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs transition shadow-md hover:shadow-lg active:scale-95"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs transition shadow-md hover:shadow-lg active:scale-95"
+            title="Telegram directo con el investigador"
           >
             <Send className="w-4 h-4" />
             <span>Telegram (+58 426 735 5056)</span>
+          </a>
+
+          <a
+            href={orcidUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition border border-slate-700 shadow-md active:scale-95"
+            title="Perfil Académico Oficial ORCID"
+          >
+            <svg className="w-4 h-4 fill-[#A6CE39]" viewBox="0 0 256 256">
+              <path d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0zM86.35 186.29H63.68V85.74h22.67v100.55zm-11.34-114.3a13.16 13.16 0 1 1 13.15-13.16 13.17 13.17 0 0 1-13.15 13.16zm117.38 67.89c0 30.08-20.16 46.41-49.09 46.41h-34.9V85.74h36.19c27.87 0 47.8 17.5 47.8 44.1zm-22.95.12c0-17.78-11.45-27.17-27.34-27.17h-11.83v54.22h11.83c16.01 0 27.34-9.52 27.34-27.05z"/>
+            </svg>
+            <span>ORCID: 0000-0003-1369-9036</span>
           </a>
         </div>
       </div>

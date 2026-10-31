@@ -107,6 +107,10 @@ export default function App() {
             data={data}
             onRefresh={loadData}
             loading={loading}
+            onNavigate={(tab) => {
+              setActiveTab(tab);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           />
         )}
 

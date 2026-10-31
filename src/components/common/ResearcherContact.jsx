@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { MessageCircle, Send, Phone, UserCheck, X } from 'lucide-react';
+import { MessageCircle, Send, Phone, UserCheck, X, ExternalLink } from 'lucide-react';
 
 export default function ResearcherContact({ mode = "floating" }) {
   const [isOpen, setIsOpen] = useState(false);
   const phoneNumber = "584267355056";
   const formattedPhone = "+58 426 735 5056";
+  const orcidUrl = "https://orcid.org/0000-0003-1369-9036";
+  const devUrl = "https://ejavierds.vercel.app";
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent("Saludos estimado Ing. Edery Rodríguez, me comunico respecto a la investigación sobre la Estrategia de Integración Tecnológica en Iribarren.")}`;
   const telegramUrl = `https://t.me/+${phoneNumber}`;
 
@@ -33,6 +35,19 @@ export default function ResearcherContact({ mode = "floating" }) {
           <Send className="w-3.5 h-3.5" />
           <span>Telegram Investigador</span>
         </a>
+
+        <a
+          href={orcidUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition border border-slate-300"
+          title="Ver perfil académico ORCID del investigador"
+        >
+          <svg className="w-3.5 h-3.5 fill-[#A6CE39]" viewBox="0 0 256 256">
+            <path d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0zM86.35 186.29H63.68V85.74h22.67v100.55zm-11.34-114.3a13.16 13.16 0 1 1 13.15-13.16 13.17 13.17 0 0 1-13.15 13.16zm117.38 67.89c0 30.08-20.16 46.41-49.09 46.41h-34.9V85.74h36.19c27.87 0 47.8 17.5 47.8 44.1zm-22.95.12c0-17.78-11.45-27.17-27.34-27.17h-11.83v54.22h11.83c16.01 0 27.34-9.52 27.34-27.05z"/>
+          </svg>
+          <span>ORCID</span>
+        </a>
       </div>
     );
   }
@@ -41,7 +56,7 @@ export default function ResearcherContact({ mode = "floating" }) {
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end">
       {isOpen && (
-        <div className="mb-3 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border-2 border-red-500/20 p-4 text-slate-800 animate-in slide-in-from-bottom-3 duration-200">
+        <div className="mb-3 w-72 sm:w-84 bg-white rounded-2xl shadow-2xl border-2 border-red-500/20 p-4 text-slate-800 animate-in slide-in-from-bottom-3 duration-200">
           <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-3">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-xs">
@@ -95,10 +110,36 @@ export default function ResearcherContact({ mode = "floating" }) {
                 +58 426-7355056
               </span>
             </a>
+
+            {/* Enlace a ORCID */}
+            <a
+              href={orcidUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-800 border border-slate-200 transition text-xs font-semibold"
+            >
+              <span className="flex items-center gap-2">
+                <svg className="w-4 h-4 fill-[#A6CE39] shrink-0" viewBox="0 0 256 256">
+                  <path d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0zM86.35 186.29H63.68V85.74h22.67v100.55zm-11.34-114.3a13.16 13.16 0 1 1 13.15-13.16 13.17 13.17 0 0 1-13.15 13.16zm117.38 67.89c0 30.08-20.16 46.41-49.09 46.41h-34.9V85.74h36.19c27.87 0 47.8 17.5 47.8 44.1zm-22.95.12c0-17.78-11.45-27.17-27.34-27.17h-11.83v54.22h11.83c16.01 0 27.34-9.52 27.34-27.05z"/>
+                </svg>
+                <span>Perfil Académico ORCID</span>
+              </span>
+              <span className="text-[10px] font-mono text-slate-600 bg-slate-200/60 px-1.5 py-0.5 rounded">
+                0000-0003-1369-9036
+              </span>
+            </a>
           </div>
 
-          <div className="mt-3 pt-2 border-t border-slate-100 text-[10px] text-slate-400 text-center">
-            Atención a servidores públicos y vocerías comunales
+          <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+            <span>Atención académica y comunal</span>
+            <a
+              href={devUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-red-600 hover:underline font-bold"
+            >
+              por ejavierds
+            </a>
           </div>
         </div>
       )}

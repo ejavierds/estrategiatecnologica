@@ -28,6 +28,8 @@ export default function HomeView({ onNavigate, recordsCount }) {
   const shareTitle = "Praxis Social Iribarren ⭐ - Estrategia de Integración Tecnológica (UBV)";
   const whatsappUrl = "https://wa.me/584267355056?text=Hola%20Ing.%20Edery%20Rodr%C3%ADguez,%20me%20comunico%20desde%20la%20Plataforma%20de%20Praxis%20Social%20Iribarren";
   const telegramUrl = "https://t.me/+584267355056";
+  const orcidUrl = "https://orcid.org/0000-0003-1369-9036";
+  const devUrl = "https://ejavierds.vercel.app";
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(shareUrl);
@@ -117,6 +119,18 @@ export default function HomeView({ onNavigate, recordsCount }) {
                 <span className="text-slate-400 block text-[11px]">Investigador / Maestrante:</span>
                 <strong className="text-white text-sm block">Ing. Edery Javier Rodríguez Alvarado</strong>
                 <span className="block text-[11px] text-red-300">C.I. V-17859495</span>
+                <a
+                  href={orcidUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[11px] text-[#A6CE39] hover:underline font-mono mt-1"
+                  title="ORCID ID Oficial del Investigador"
+                >
+                  <svg className="w-3.5 h-3.5 fill-[#A6CE39] shrink-0" viewBox="0 0 256 256">
+                    <path d="M128 0C57.31 0 0 57.31 0 128s57.31 128 128 128 128-57.31 128-128S198.69 0 128 0zM86.35 186.29H63.68V85.74h22.67v100.55zm-11.34-114.3a13.16 13.16 0 1 1 13.15-13.16 13.17 13.17 0 0 1-13.15 13.16zm117.38 67.89c0 30.08-20.16 46.41-49.09 46.41h-34.9V85.74h36.19c27.87 0 47.8 17.5 47.8 44.1zm-22.95.12c0-17.78-11.45-27.17-27.34-27.17h-11.83v54.22h11.83c16.01 0 27.34-9.52 27.34-27.05z"/>
+                  </svg>
+                  <span>ORCID: 0000-0003-1369-9036</span>
+                </a>
               </div>
 
               {/* Botones directos de contacto al investigador */}
@@ -155,7 +169,20 @@ export default function HomeView({ onNavigate, recordsCount }) {
               <span className="text-slate-400 block text-[11px]">Línea y Enfoque:</span>
               <span className="text-white font-medium block">Dominio Tecnológico para el Desarrollo Endógeno</span>
               <span className="block text-[11px] text-amber-300 mt-1">Paradigma Marxista Heterodoxo</span>
-            </div>
+              </div>
+              <div className="pt-2.5 mt-2 border-t border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between">
+                <span>Diseñado y desarrollado:</span>
+                <a
+                  href={devUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-red-400 font-bold hover:underline flex items-center gap-1"
+                  title="Portafolio de ejavierds"
+                >
+                  <span>ejavierds</span>
+                  <ExternalLink className="w-2.5 h-2.5" />
+                </a>
+              </div>
           </div>
 
           {/* Botones de Acción Rápida */}

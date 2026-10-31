@@ -2,9 +2,12 @@
 ### Plataforma de Integración Tecnológica para la Transformación de la Gestión Social y la Emancipación de Familias Vulnerables
 
 **Investigador / Maestrante:** Ing. Edery Javier Rodríguez Alvarado (C.I. V-17859495)  
-**Contacto Directo:**
-*   💬 **WhatsApp:** [+58 426 735 5056](https://wa.me/584267355056?text=Hola%20Ing.%20Edery%20Rodr%C3%ADguez,%20me%20comunico%20desde%20la%20Plataforma%20de%20Praxis%20Social%20Iribarren)
-*   ✈️ **Telegram:** [+58 426 735 5056](https://t.me/+584267355056)
+**Perfil Científico ORCID:** [https://orcid.org/0000-0003-1369-9036](https://orcid.org/0000-0003-1369-9036)  
+**Diseño y Desarrollo:** [ejavierds](https://ejavierds.vercel.app)  
+
+**Canales Directos con el Investigador (+58 426 735 5056):**
+*   💬 **WhatsApp:** [Enviar mensaje directo](https://wa.me/584267355056?text=Hola%20Ing.%20Edery%20Rodr%C3%ADguez,%20me%20comunico%20desde%20la%20Plataforma%20de%20Praxis%20Social%20Iribarren)
+*   ✈️ **Telegram:** [Iniciar chat directo](https://t.me/+584267355056)
 
 **Tutor Académico:** Dr. Abel José Pérez Wilke (C.I. V-10844246)  
 **Institución:** Universidad Bolivariana de Venezuela (UBV) — Eje Geopolítico Regional Precursor José Leonardo Chirinos (Sede Estado Lara)  
@@ -26,7 +29,22 @@ Su objetivo es develar y superar la contradicción fundamental entre:
 
 ---
 
-## 🚀 2. Stack Tecnológico
+## 🔒 2. Seguridad y Protección de Módulos Estratégicos
+
+Por criterios de rigurosidad metodológica, custodia de datos y preservación de la integridad del diagnóstico, los siguientes módulos se encuentran protegidos mediante contraseña de autorización investigativa:
+
+*   **📊 Analítica Práxica (Dashboard Estadístico)**
+*   **⚙️ Configuración del Repositorio de Datos y Parámetros de Sincronización**
+
+**Contraseña Oficial:**
+```
+Praxis_Marx_2026
+```
+*(Configurada en las variables de entorno de producción como `VITE_DASHBOARD_PASSWORD`)*.
+
+---
+
+## 🚀 3. Stack Tecnológico
 
 *   **Frontend SPA:** React 19, Tailwind CSS (arquitectura limpia, minimalista y responsiva).
 *   **Visualización de Datos:** Recharts (Gráficos Donut/Pie, Gráficos de Barras, Métricas y Tablas interactivas).
@@ -40,9 +58,9 @@ Su objetivo es develar y superar la contradicción fundamental entre:
 
 ---
 
-## 🧭 3. Estructura y Módulos de la Aplicación
+## 🧭 4. Estructura y Módulos de la Aplicación
 
-1.  **🏠 Inicio (Contexto de la Investigación):** Banner con los datos del maestrante, tutor y universidad; resumen de la contradicción problema, fundamentos teóricos (Marx, Varsavsky, Freire, Santos, Matus, Chávez), accesos directos a los instrumentos y botones de contacto telefónico directo vía WhatsApp y Telegram.
+1.  **🏠 Inicio (Contexto de la Investigación):** Banner con los datos del maestrante, tutor, universidad y perfil ORCID; resumen de la contradicción problema, fundamentos teóricos (Marx, Varsavsky, Freire, Santos, Matus, Chávez), accesos directos a los instrumentos y botones de contacto telefónico directo vía WhatsApp y Telegram.
 2.  **📝 Módulo de Instrumentos (Formularios Dinámicos):**
     *   *Instrumento 1 (Entrevista en Profundidad):* Dirigido a tomadores de decisiones; evalúa Totalidad Concreta, Contradicción Capital-Trabajo/Burocracia, Mediaciones de Poder, Alienación vs Soberanía y Praxis/Síntesis.
     *   *Instrumento 2 (Grupo Focal):* Diálogo de saberes entre trabajadores sociales, técnicos de sistemas y vocerías comunales (Problematización, Nudos Críticos y Utopía Concreta).
@@ -50,20 +68,21 @@ Su objetivo es develar y superar la contradicción fundamental entre:
     *   *Instrumento 4 (Auditoría de Sistemas):* Caracterización de plataformas según Software Libre vs Privativo, capacidad de interoperabilidad y contradicción con la Ley de Infogobierno.
     *   *Instrumento 5 (Mapeo de Actores PES):* Metodología de Carlos Matus para correlacionar recursos de poder y posiciones ante la integración.
     *   *Validación Crítica:* Contador de palabras mínimas en tiempo real (evita respuestas vacías "Sí" o "No") y checkbox obligatorio de Consentimiento Informado.
-3.  **📊 Analítica Práxica (Dashboard Estadístico):**
+3.  **📊 Analítica Práxica (Dashboard Estadístico Protegido):**
     *   Gráfico circular: Porcentaje de sistemas Libres vs. Privativos vs. Mixtos (Instrumento 4).
     *   Gráfico de barras: Correlación de fuerzas de actores ante la integración (Instrumento 5).
     *   Gráfico de barras: Frecuencia de categorías críticas de observación etnográfica (Instrumento 3).
     *   Tarjetas de KPIs: Total de registros, instituciones auditadas, porcentaje de duplicidad crítica de datos.
     *   Explorador de registros con buscador en tiempo real y exportación en formato JSON.
+    *   Control de bloqueo de sesión inmediato.
 4.  **🧠 Intérprete Dialéctico:** Motor cualitativo que analiza el lenguaje y los discursos recolectados, genera alertas críticas automáticas y estructura la síntesis dialéctica (Tesis, Antítesis y Síntesis / Negación de la Negación) lista para el Momento III del Trabajo de Grado.
 5.  **⚖️ Marco Legal y Ético:** Texto completo de Términos de Uso, Bases Legales venezolanas (CRBV, Ley de Infogobierno, Plan de la Patria 7T, Ley del Poder Popular) y Políticas de Privacidad Soberana.
 6.  **📘 Guía del Usuario:** Manual operativo paso a paso con canales directos de soporte al investigador.
-7.  **⚙️ Configuración / Sincronización de Datos:** Visor de credenciales, comprobador de conectividad (Ping) y visor del script de backend.
+7.  **⚙️ Configuración / Sincronización de Datos Protegida:** Visor de credenciales, comprobador de conectividad (Ping), restaurador de muestras y visor del script de backend.
 
 ---
 
-## 🛠️ 4. Guía de Instalación y Ejecución Local
+## 🛠️ 5. Guía de Instalación y Ejecución Local
 
 ### Prerrequisitos
 *   Node.js (v18 o superior)
@@ -86,16 +105,20 @@ npm run build
 
 ---
 
-## ☁️ 5. Despliegue en Servidor en la Nube vía GitHub
+## ☁️ 6. Despliegue en Servidor en la Nube vía GitHub
 
 1.  Repositorio oficial: [https://github.com/ejavierds/estrategiatecnologica](https://github.com/ejavierds/estrategiatecnologica)
 2.  Configuración de sincronización automática:
     *   Cada confirmación (`git push`) en la rama `main` compila y publica los cambios de forma instantánea.
-    *   Las variables de entorno se leen desde el archivo de configuración institucional.
+    *   Las variables de entorno se leen desde el archivo de configuración institucional:
+        *   `VITE_APP_URL`: `https://estrategiatecnologica.vercel.app`
+        *   `VITE_GAS_API_URL`: URL del Web App de sincronización remota
+        *   `VITE_SPREADSHEET_ID`: `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`
+        *   `VITE_DASHBOARD_PASSWORD`: `Praxis_Marx_2026`
 
 ---
 
-## 📜 6. Configuración del Servicio de Backend (`Código.gs`)
+## 📜 7. Configuración del Servicio de Backend (`Código.gs`)
 
 1.  Abre el documento del Repositorio Central de Datos (ID: `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`).
 2.  En el menú superior, ve a: **Extensiones > Editor de Scripts**.
@@ -109,10 +132,14 @@ npm run build
     *   **Ejecutar como:** `Yo (tu correo institucional)`
     *   **Quién tiene acceso:** `Cualquiera (Anyone)` *(Para permitir la recepción y consulta de diagnósticos)*
 8.  Haz clic en **Implementar**, autoriza los permisos requeridos y copia la URL que termina en `/exec`.
-9.  Abre la aplicación web, ve al menú **⚙️ Configuración**, pega la URL y haz clic en **«Probar Conexión (Ping)»** y **«Guardar URL»**.
+9.  Abre la aplicación web, desbloquea la **⚙️ Configuración**, pega la URL y haz clic en **«Probar Conexión (Ping)»** y **«Guardar URL»**.
 
 ---
 
-## ⚖️ 7. Licencia y Soberanía
+## ⚖️ 8. Licencia y Soberanía
 
 Este proyecto promueve los principios del **Software Libre** y la soberanía tecnológica nacional de la República Bolivariana de Venezuela, en cumplimiento estricto con el Decreto N° 8.950 (Ley de Infogobierno). Todos los datos recolectados resguardan el anonimato de las familias y persiguen fines estrictamente científicos y transformadores de la gestión pública local.
+
+---
+
+**Diseñado y desarrollado por [ejavierds](https://ejavierds.vercel.app)**

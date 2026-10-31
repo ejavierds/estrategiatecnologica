@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   X, 
   Database, 
@@ -10,20 +10,46 @@ import {
   Play, 
   RefreshCw,
   FileCode,
-  ShieldCheck,
-  RotateCcw
+  ShieldCheck, 
+  RotateCcw,
+  Lock
 } from 'lucide-react';
 import { getGasUrl, saveGasUrl, pingGasEndpoint, resetToSampleData } from '../../services/api';
 import { SPREADSHEET_ID } from '../../data/initialData';
+import { isUnlocked, lockSession } from '../../services/auth';
+import AuthLockView from '../common/AuthLockView';
 
 export default function SettingsModal({ isOpen, onClose, onDataReset }) {
+  const [authenticated, setAuthenticated] = useState(isUnlocked());
   const [gasUrlInput, setGasUrlInput] = useState(getGasUrl());
   const [pingStatus, setPingStatus] = useState(null);
   const [pingLoading, setPingLoading] = useState(false);
   const [codeCopied, setCodeCopied] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      setAuthenticated(isUnlocked());
+      setGasUrlInput(getGasUrl());
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
+
+  // Si no está autenticado, mostramos la pantalla de bloqueo de seguridad
+  if (!authenticated) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-150">
+        <div className="relative w-full max-w-md">
+          <AuthLockView
+            onUnlocked={() => setAuthenticated(true)}
+            onCancel={onClose}
+            title="Configuración Protegida"
+          />
+        </div>
+      </div>
+    );
+  }
 
   const handleSaveUrl = () => {
     saveGasUrl(gasUrlInput);
@@ -86,6 +112,12 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
     }
   };
 
+  const handleLockSession = () => {
+    lockSession();
+    setAuthenticated(false);
+    onClose();
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-150">
       <div 
@@ -109,12 +141,23 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
             </div>
           </div>
 
-          <button
-            onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-200 rounded-xl transition"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleLockSession}
+              className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-red-200 bg-red-50 hover:bg-red-100 text-red-700 text-xs font-bold transition"
+              title="Bloquear sesión (requerirá contraseña nuevamente)"
+            >
+              <Lock className="w-3.5 h-3.5" />
+              <span>Bloquear</span>
+            </button>
+
+            <button
+              onClick={onClose}
+              className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-200 rounded-xl transition"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         {/* Cuerpo del Modal con Scroll */}
@@ -244,7 +287,10 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
         </div>
 
         {/* Pie del Modal */}
-        <div className="p-4 bg-slate-50 border-t border-slate-100 flex justify-end">
+        <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
+          <span className="text-[11px] text-slate-400">
+            Protegido con contraseña investigativa: <code className="font-mono text-slate-600">Praxis_Marx_2026</code>
+          </span>
           <button
             onClick={onClose}
             className="px-5 py-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition"

@@ -16,10 +16,13 @@ import {
   Search,
   Filter,
   CheckCircle2,
-  FileCheck
+  FileCheck,
+  Lock
 } from 'lucide-react';
 import MarxistTooltip from '../common/MarxistTooltip';
 import { SPREADSHEET_ID } from '../../data/initialData';
+import { isUnlocked, lockSession } from '../../services/auth';
+import AuthLockView from '../common/AuthLockView';
 
 const COLORS = ['#DC2626', '#3B82F6', '#F59E0B', '#10B981', '#8B5CF6', '#EC4899'];
 const ARCH_COLORS = {
@@ -28,9 +31,20 @@ const ARCH_COLORS = {
   'Mixto': '#F59E0B'
 };
 
-export default function DashboardView({ data, onRefresh, loading }) {
+export default function DashboardView({ data, onRefresh, loading, onNavigate }) {
+  const [authenticated, setAuthenticated] = useState(isUnlocked());
   const [selectedTable, setSelectedTable] = useState('auditoria');
   const [searchQuery, setSearchQuery] = useState('');
+
+  if (!authenticated) {
+    return (
+      <AuthLockView
+        onUnlocked={() => setAuthenticated(true)}
+        onCancel={() => onNavigate && onNavigate('home')}
+        title="Módulo Protegido: Analítica Práxica"
+      />
+    );
+  }
 
   // 1. Métricas KPIs
   const kpis = useMemo(() => {
@@ -212,6 +226,18 @@ export default function DashboardView({ data, onRefresh, loading }) {
           >
             <Download className="w-4 h-4" />
             <span>Exportar Data (JSON)</span>
+          </button>
+
+          <button
+            onClick={() => {
+              lockSession();
+              setAuthenticated(false);
+            }}
+            className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-red-200 bg-red-50 hover:bg-red-100 text-red-700 text-xs font-bold transition shadow-xs"
+            title="Bloquear acceso a la analítica (requerirá contraseña nuevamente)"
+          >
+            <Lock className="w-3.5 h-3.5" />
+            <span>Bloquear</span>
           </button>
         </div>
       </div>
