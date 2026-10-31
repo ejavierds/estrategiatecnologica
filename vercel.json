@@ -37,11 +37,15 @@
       ]
     },
     {
-      "source": "/(og-image.png|twitter-card.png|star.svg|site.webmanifest)",
+      "source": "/(og-image.png|og-image.jpg|twitter-card.png|twitter-card.jpg|whatsapp-preview.jpg|star.svg|site.webmanifest)",
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=86400, stale-while-revalidate=604800"
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
         }
       ]
     }

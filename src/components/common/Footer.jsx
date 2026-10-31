@@ -144,7 +144,7 @@ export default function Footer({ onNavigate }) {
               <li className="pt-2 text-[11px] text-slate-500">
                 Base de Datos vinculada:
                 <div className="font-mono text-[10px] text-slate-400 bg-slate-800/80 p-1.5 rounded mt-1 truncate border border-slate-700/60">
-                  Base de Datos Soberana: 1pTxVBSWoSmOH02h9...
+                  Base de Datos Soberana Activa
                 </div>
               </li>
             </ul>

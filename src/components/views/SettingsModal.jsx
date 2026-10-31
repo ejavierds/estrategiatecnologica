@@ -259,7 +259,7 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
             </div>
 
             <ol className="list-decimal list-inside space-y-1.5 text-xs text-slate-600 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200">
-              <li>Abre el documento de la Base de Datos Soberana (ID: <code className="font-mono text-red-600">1pTxVBSWoSm...</code>).</li>
+              <li>Abre el documento de la Base de Datos Soberana.</li>
               <li>En el menú superior, ve a <strong>Extensiones &gt; Editor de Scripts</strong>.</li>
               <li>Reemplaza el contenido del archivo con el código provisto en <code className="font-mono text-slate-800">google-apps-script/Codigo.gs</code>.</li>
               <li>Haz clic en <strong>Implementar &gt; Nueva implementación</strong>.</li>

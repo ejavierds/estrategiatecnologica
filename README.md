@@ -120,7 +120,7 @@ npm run build
 
 ## 📜 7. Configuración del Servicio de Backend (`Código.gs`)
 
-1.  Abre el documento de la Base de Datos Central (ID: `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`).
+1.  Abre el documento de la Base de Datos Central.
 2.  En el menú superior, ve a: **Extensiones > Editor de Scripts**.
 3.  Copia el código provisto en el archivo:
     `google-apps-script/Codigo.gs`
