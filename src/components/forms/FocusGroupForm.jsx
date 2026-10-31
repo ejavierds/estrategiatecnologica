@@ -60,7 +60,7 @@ export default function FocusGroupForm({ onRecordSubmitted }) {
       const res = await submitInstrumentRecord('grupo_focal', formData);
       setStatusMessage({
         type: 'success',
-        text: `¡Sesión de Grupo Focal registrada! Código: ${res.recordId}. Almacenada en la memoria soberana${res.gasSynced ? ' y sincronizada con Google Spreadsheets' : ''}.`
+        text: `¡Sesión de Grupo Focal registrada! Código: ${res.recordId}. Almacenada en la memoria soberana${res.gasSynced ? ' y sincronizada con la Base de Datos Soberana' : ''}.`
       });
 
       setFormData(prev => ({

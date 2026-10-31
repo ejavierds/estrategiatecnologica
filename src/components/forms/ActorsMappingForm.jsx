@@ -62,7 +62,7 @@ export default function ActorsMappingForm({ onRecordSubmitted }) {
       const res = await submitInstrumentRecord('mapeo_actores', formData);
       setStatusMessage({
         type: 'success',
-        text: `¡Actor mapeado exitosamente! Código: ${res.recordId}. Almacenado en la memoria soberana${res.gasSynced ? ' y sincronizado con Google Spreadsheets' : ''}.`
+        text: `¡Actor mapeado exitosamente! Código: ${res.recordId}. Almacenado en la memoria soberana${res.gasSynced ? ' y sincronizado con la Base de Datos Soberana' : ''}.`
       });
 
       setFormData(prev => ({

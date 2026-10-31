@@ -10,11 +10,17 @@ import {
   HelpCircle, 
   ExternalLink,
   Layers,
-  ArrowRight
+  ArrowRight,
+  MessageCircle,
+  Send,
+  Phone
 } from 'lucide-react';
 import RedStar from '../common/RedStar';
 
 export default function UserGuideView({ onNavigate }) {
+  const whatsappUrl = "https://wa.me/584267355056?text=Hola%20Ing.%20Edery%20Rodr%C3%ADguez,%20me%20comunico%20desde%20la%20Plataforma%20de%20Praxis%20Social%20Iribarren";
+  const telegramUrl = "https://t.me/+584267355056";
+
   return (
     <div className="space-y-8 max-w-5xl mx-auto animate-in fade-in duration-200">
       
@@ -75,7 +81,7 @@ export default function UserGuideView({ onNavigate }) {
                 <strong>⚖️ Bases Legales:</strong> Términos de uso, marco constitucional venezolano y políticas de privacidad y soberanía de datos.
               </li>
               <li className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <strong>⚙️ Conexión Sheets:</strong> Verificación de conexión con Google Apps Script y hoja de cálculo soberana.
+                <strong>⚙️ Sincronización Soberana:</strong> Verificación de conexión con el repositorio central de datos.
               </li>
             </ul>
           </div>
@@ -112,7 +118,7 @@ export default function UserGuideView({ onNavigate }) {
                 <strong>Validación de Palabras Mínimas:</strong> Para evitar respuestas vacías o monosilábicas como «Sí» o «No», cada campo cualitativo exige un mínimo de 10 palabras reflexivas. El indicador cambiará a color verde cuando alcances la densidad analítica requerida.
               </li>
               <li>
-                Marca la casilla de <strong>«Consentimiento Informado y Validación Metodológica»</strong> y haz clic en <strong>Guardar</strong>. Los datos se almacenarán en la memoria soberana y en el Google Spreadsheet conectado.
+                Marca la casilla de <strong>«Consentimiento Informado y Validación Metodológica»</strong> y haz clic en <strong>Guardar</strong>. Los datos se almacenarán en la memoria soberana y en el repositorio central de datos.
               </li>
             </ol>
           </div>
@@ -184,6 +190,44 @@ export default function UserGuideView({ onNavigate }) {
           </div>
         </div>
 
+      </div>
+
+      {/* Soporte y Contacto Directo con el Investigador */}
+      <div className="bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-8 border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-md">
+        <div className="space-y-2 max-w-xl">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-red-400 flex items-center gap-1.5">
+            <Phone className="w-3.5 h-3.5" />
+            Atención Metodológica y Operativa
+          </span>
+          <h4 className="font-extrabold text-lg text-white">
+            ¿Requieres orientación para aplicar un instrumento en tu institución?
+          </h4>
+          <p className="text-xs text-slate-300 leading-relaxed">
+            Comunícate directamente con el maestrante e investigador responsable <strong>Ing. Edery Javier Rodríguez Alvarado</strong> al número institucional:
+          </p>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition shadow-md hover:shadow-lg active:scale-95"
+          >
+            <MessageCircle className="w-4 h-4 fill-current" />
+            <span>WhatsApp (+58 426 735 5056)</span>
+          </a>
+
+          <a
+            href={telegramUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs transition shadow-md hover:shadow-lg active:scale-95"
+          >
+            <Send className="w-4 h-4" />
+            <span>Telegram (+58 426 735 5056)</span>
+          </a>
+        </div>
       </div>
 
       {/* Botón de Iniciar */}

@@ -11,7 +11,8 @@ import {
   Menu, 
   X,
   Database,
-  CloudCheck
+  MessageCircle,
+  Send
 } from 'lucide-react';
 import { getGasUrl } from '../../services/api';
 
@@ -91,8 +92,34 @@ export default function Navbar({ activeTab, setActiveTab, onOpenSettings }) {
             })}
           </nav>
 
-          {/* Acciones Derecha (Conexión Sheets & Config) */}
+          {/* Acciones Derecha (Contacto Directo Investigador & Sincronización) */}
           <div className="hidden sm:flex items-center gap-2">
+            
+            {/* Botón WhatsApp Directo */}
+            <a
+              href="https://wa.me/584267355056?text=Hola%20Ing.%20Edery%20Rodr%C3%ADguez,%20me%20comunico%20desde%20la%20Plataforma%20de%20Praxis%20Social%20Iribarren"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition shadow-2xs"
+              title="WhatsApp directo con el investigador Ing. Edery Rodríguez (+58 426 735 5056)"
+            >
+              <MessageCircle className="w-3.5 h-3.5 fill-current" />
+              <span>WhatsApp</span>
+            </a>
+
+            {/* Botón Telegram Directo */}
+            <a
+              href="https://t.me/+584267355056"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold bg-sky-500 hover:bg-sky-600 text-white transition shadow-2xs"
+              title="Telegram directo con el investigador Ing. Edery Rodríguez (+58 426 735 5056)"
+            >
+              <Send className="w-3.5 h-3.5" />
+              <span>Telegram</span>
+            </a>
+
+            {/* Estado de Sincronización Soberana */}
             <button
               onClick={onOpenSettings}
               className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
@@ -100,17 +127,17 @@ export default function Navbar({ activeTab, setActiveTab, onOpenSettings }) {
                   ? 'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100'
                   : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
               }`}
-              title="Configurar conexión con Google Apps Script y Spreadsheets"
+              title="Configurar sincronización con el Repositorio de Datos Soberano"
             >
               {gasUrl ? (
                 <>
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span>Sheets Conectado</span>
+                  <span>Base Soberana Conectada</span>
                 </>
               ) : (
                 <>
                   <Database className="w-3.5 h-3.5 text-slate-600" />
-                  <span>Modo Local Soberano</span>
+                  <span>Almacenamiento Soberano</span>
                 </>
               )}
               <Settings className="w-3.5 h-3.5 text-slate-500 ml-1" />
@@ -122,7 +149,7 @@ export default function Navbar({ activeTab, setActiveTab, onOpenSettings }) {
             <button
               onClick={onOpenSettings}
               className="p-2 text-slate-600 hover:text-red-600 rounded-lg border border-slate-200"
-              aria-label="Configuración"
+              aria-label="Configuración Soberana"
             >
               <Settings className="w-5 h-5" />
             </button>
@@ -140,7 +167,28 @@ export default function Navbar({ activeTab, setActiveTab, onOpenSettings }) {
 
       {/* Menú Mobile Expandible */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-slate-200 bg-white px-4 pt-2 pb-4 space-y-1 shadow-lg animate-in slide-in-from-top-2 duration-150">
+        <div className="lg:hidden border-t border-slate-200 bg-white px-4 pt-2 pb-4 space-y-2 shadow-lg animate-in slide-in-from-top-2 duration-150">
+          <div className="grid grid-cols-2 gap-2 pb-2 border-b border-slate-100">
+            <a
+              href="https://wa.me/584267355056?text=Hola%20Ing.%20Edery%20Rodr%C3%ADguez,%20me%20comunico%20desde%20la%20Plataforma%20de%20Praxis%20Social%20Iribarren"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-center gap-1.5 p-2 rounded-xl bg-emerald-600 text-white font-bold text-xs"
+            >
+              <MessageCircle className="w-4 h-4 fill-current" />
+              <span>WhatsApp</span>
+            </a>
+            <a
+              href="https://t.me/+584267355056"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-center gap-1.5 p-2 rounded-xl bg-sky-500 text-white font-bold text-xs"
+            >
+              <Send className="w-4 h-4" />
+              <span>Telegram</span>
+            </a>
+          </div>
+
           {navItems.map((item) => {
             const isActive = activeTab === item.id;
             return (

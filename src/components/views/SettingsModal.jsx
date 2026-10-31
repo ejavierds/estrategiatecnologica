@@ -35,7 +35,7 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
     if (!gasUrlInput.trim()) {
       setPingStatus({
         success: false,
-        message: 'Por favor ingresa la URL del Web App de Google Apps Script antes de probar.'
+        message: 'Por favor ingresa la URL de la API de Sincronización antes de probar.'
       });
       return;
     }
@@ -47,7 +47,7 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
       const res = await pingGasEndpoint(gasUrlInput);
       setPingStatus({
         success: true,
-        message: `¡Conexión exitosa con Google Apps Script! Mensaje: ${res.message || 'API Operativa'}`
+        message: `¡Conexión exitosa con el servicio remoto! Mensaje: ${res.message || 'API Operativa'}`
       });
       saveGasUrl(gasUrlInput);
     } catch (err) {
@@ -75,7 +75,7 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
       if (res.ok) {
         text = await res.text();
       } else {
-        text = `// ID DE LA HOJA DE CÁLCULO: ${SPREADSHEET_ID}\n// Revisa el archivo google-apps-script/Codigo.gs incluido en el repositorio.`;
+        text = `// ID DEL REPOSITORIO DE DATOS SOBERANO: ${SPREADSHEET_ID}\n// Revisa el archivo google-apps-script/Codigo.gs incluido en el repositorio.`;
       }
       navigator.clipboard.writeText(text);
       setCodeCopied(true);
@@ -104,7 +104,7 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
                 Configuración de Conexión Soberana
               </h3>
               <p className="text-xs text-slate-500">
-                Google Spreadsheets + Google Apps Script (GAS) API
+                Base de Datos Institucional y API de Sincronización Remota
               </p>
             </div>
           </div>
@@ -120,11 +120,11 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
         {/* Cuerpo del Modal con Scroll */}
         <div className="p-6 overflow-y-auto space-y-6 text-xs sm:text-sm">
           
-          {/* Identificación del Spreadsheet */}
+          {/* Identificación del Repositorio */}
           <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 space-y-2">
             <div className="flex items-center justify-between">
               <span className="font-bold text-slate-900 text-xs uppercase tracking-wide">
-                ID Oficial del Google Spreadsheet
+                ID Oficial del Repositorio de Datos Soberano
               </span>
               <a
                 href={`https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/edit`}
@@ -132,7 +132,7 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
                 rel="noreferrer"
                 className="inline-flex items-center gap-1 text-[11px] font-bold text-red-600 hover:underline"
               >
-                <span>Abrir Hoja en Google Drive</span>
+                <span>Abrir Repositorio de Datos</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
@@ -141,25 +141,25 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
               {SPREADSHEET_ID}
             </div>
             <p className="text-[11px] text-slate-500">
-              El script creará automáticamente 5 hojas distintas (Entrevistas, GruposFocales, MatrizEtnografica, AuditoriaSistemas, MapeoActores) con encabezados oficiales.
+              El script sincroniza 5 matrices estructuradas (Entrevistas, GruposFocales, MatrizEtnografica, AuditoriaSistemas, MapeoActores) con encabezados oficiales.
             </p>
           </div>
 
-          {/* Campo URL del Web App de GAS */}
+          {/* Campo URL del Servicio de Integración */}
           <div className="space-y-2">
             <label htmlFor="gas_url" className="block font-bold text-slate-900 text-xs uppercase tracking-wide">
-              URL del Web App de Google Apps Script (doGet / doPost)
+              URL de la API de Sincronización Soberana (doGet / doPost)
             </label>
             <input
               type="url"
               id="gas_url"
               value={gasUrlInput}
               onChange={(e) => setGasUrlInput(e.target.value)}
-              placeholder="https://script.google.com/macros/s/AKfycbx.../exec"
+              placeholder="https://script.google.com/macros/s/.../exec"
               className="w-full p-3 text-xs font-mono rounded-xl border border-slate-300 bg-white focus:outline-none focus:ring-2 focus:ring-red-200 text-slate-800"
             />
             <p className="text-[11px] text-slate-500">
-              Si dejas este campo vacío o la conexión falla, la aplicación continuará funcionando ininterrumpidamente guardando todos los datos en el <strong>Almacenamiento Local Soberano</strong> del navegador.
+              Si dejas este campo vacío o la conexión remota no responde, la aplicación continuará funcionando ininterrumpidamente guardando todos los datos en el <strong>Almacenamiento Local Soberano</strong> del navegador.
             </p>
 
             {/* Botones Probar y Guardar */}
@@ -198,12 +198,12 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
             )}
           </div>
 
-          {/* Guía Rápida para Desplegar el Script en Google Apps Script */}
+          {/* Guía Rápida para Desplegar el Script en el Servidor */}
           <div className="border-t border-slate-200 pt-4 space-y-3">
             <div className="flex items-center justify-between">
               <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wide flex items-center gap-1.5">
                 <FileCode className="w-4 h-4 text-red-600" />
-                <span>Pasos para Instalar «Código.gs» en tu Google Drive</span>
+                <span>Pasos para Instalar «Código.gs» en el Repositorio Central</span>
               </h4>
 
               <button
@@ -216,13 +216,13 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
             </div>
 
             <ol className="list-decimal list-inside space-y-1.5 text-xs text-slate-600 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200">
-              <li>Abre el documento de Google Spreadsheet (ID: <code className="font-mono text-red-600">1pTxVBSWoSm...</code>).</li>
-              <li>En el menú superior, ve a <strong>Extensiones &gt; Apps Script</strong>.</li>
+              <li>Abre el documento del Repositorio de Datos (ID: <code className="font-mono text-red-600">1pTxVBSWoSm...</code>).</li>
+              <li>En el menú superior, ve a <strong>Extensiones &gt; Editor de Scripts</strong>.</li>
               <li>Reemplaza el contenido del archivo con el código provisto en <code className="font-mono text-slate-800">google-apps-script/Codigo.gs</code>.</li>
               <li>Haz clic en <strong>Implementar &gt; Nueva implementación</strong>.</li>
-              <li>Selecciona tipo: <strong>Aplicación web (Web app)</strong>.</li>
+              <li>Selecciona tipo: <strong>Aplicación web</strong>.</li>
               <li>En «Quién tiene acceso», selecciona obligatoriamente: <strong>Cualquiera (Anyone)</strong>.</li>
-              <li>Haz clic en <strong>Implementar</strong>, autoriza los permisos y copia la URL generada en el campo superior.</li>
+              <li>Haz clic en <strong>Implementar</strong>, autoriza los permisos requeridos y copia la URL generada en el campo superior.</li>
             </ol>
           </div>
 

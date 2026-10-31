@@ -1,8 +1,11 @@
 import React from 'react';
 import RedStar from './RedStar';
-import { Scale, BookOpen, ShieldCheck, Heart } from 'lucide-react';
+import { Scale, BookOpen, ShieldCheck, MessageCircle, Send } from 'lucide-react';
 
 export default function Footer({ onNavigate }) {
+  const whatsappUrl = "https://wa.me/584267355056?text=Hola%20Ing.%20Edery%20Rodr%C3%ADguez,%20me%20comunico%20desde%20la%20Plataforma%20de%20Praxis%20Social%20Iribarren";
+  const telegramUrl = "https://t.me/+584267355056";
+
   return (
     <footer className="bg-slate-900 text-slate-300 border-t border-slate-800 mt-20 pt-12 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,7 +44,7 @@ export default function Footer({ onNavigate }) {
             </div>
           </div>
 
-          {/* Columna 2: Créditos Académicos */}
+          {/* Columna 2: Créditos Académicos y Contacto Directo */}
           <div className="space-y-3">
             <h4 className="text-white font-semibold text-sm uppercase tracking-wider border-b border-slate-800 pb-2">
               Créditos Académicos
@@ -51,8 +54,33 @@ export default function Footer({ onNavigate }) {
                 <span className="text-slate-500 block">Investigador:</span>
                 <strong className="text-slate-200">Ing. Edery Javier Rodríguez Alvarado</strong>
                 <span className="block text-[11px] text-slate-400">C.I. V-17859495</span>
+                
+                {/* Botones de Contacto Directo */}
+                <div className="flex items-center gap-2 mt-2">
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] transition"
+                    title="Contactar al investigador por WhatsApp"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                    <span>WhatsApp</span>
+                  </a>
+                  <a
+                    href={telegramUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-sky-500 hover:bg-sky-600 text-white font-bold text-[11px] transition"
+                    title="Contactar al investigador por Telegram"
+                  >
+                    <Send className="w-3 h-3" />
+                    <span>Telegram</span>
+                  </a>
+                </div>
               </div>
-              <div>
+
+              <div className="pt-2">
                 <span className="text-slate-500 block">Tutor de Proyecto:</span>
                 <strong className="text-slate-200">Dr. Abel José Pérez Wilke</strong>
                 <span className="block text-[11px] text-slate-400">C.I. V-10844246</span>
@@ -101,7 +129,7 @@ export default function Footer({ onNavigate }) {
               <li className="pt-2 text-[11px] text-slate-500">
                 Base de Datos vinculada:
                 <div className="font-mono text-[10px] text-slate-400 bg-slate-800/80 p-1.5 rounded mt-1 truncate border border-slate-700/60">
-                  Google Sheet: 1pTxVBSWoSmOH02h9...
+                  Repositorio Soberano: 1pTxVBSWoSmOH02h9...
                 </div>
               </li>
             </ul>

@@ -16,7 +16,7 @@ import {
   Search,
   Filter,
   CheckCircle2,
-  FileSpreadsheet
+  FileCheck
 } from 'lucide-react';
 import MarxistTooltip from '../common/MarxistTooltip';
 import { SPREADSHEET_ID } from '../../data/initialData';
@@ -199,7 +199,7 @@ export default function DashboardView({ data, onRefresh, loading }) {
             onClick={onRefresh}
             disabled={loading}
             className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-bold transition shadow-xs"
-            title="Recargar datos desde Google Sheets / Almacenamiento Local"
+            title="Recargar datos desde la Base de Datos Soberana / Almacenamiento Local"
           >
             <RefreshCw className={`w-4 h-4 text-slate-600 ${loading ? 'animate-spin' : ''}`} />
             <span>{loading ? 'Actualizando...' : 'Refrescar Datos'}</span>
@@ -395,7 +395,7 @@ export default function DashboardView({ data, onRefresh, loading }) {
               Explorador de Datos Recolectados
             </h3>
             <p className="text-xs text-slate-500">
-              Registros alojados en la memoria soberana y vinculados con Google Sheets ID: {SPREADSHEET_ID.substring(0, 16)}...
+              Registros alojados en la memoria soberana y vinculados con el Repositorio Soberano ID: {SPREADSHEET_ID.substring(0, 16)}...
             </p>
           </div>
 

@@ -6,7 +6,7 @@
  * INVESTIGADOR: ING. EDERY JAVIER RODRÍGUEZ ALVARADO
  * TUTOR: DR. ABEL JOSÉ PÉREZ WILKE
  * =========================================================================================
- * BACKEND API REST: GOOGLE APPS SCRIPT (GAS) CON GOOGLE SPREADSHEETS
+ * BACKEND API REST: INTEGRACION Y PERSISTENCIA SOBERANA
  * ID DE LA HOJA DE CÁLCULO: 1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec
  * =========================================================================================
  */
@@ -119,7 +119,7 @@ function doGet(e) {
     if (action === "ping") {
       return createJsonResponse({
         status: "success",
-        message: "API Praxis Social Iribarren operativa y conectada al Spreadsheet.",
+        message: "API Praxis Social Iribarren operativa y conectada al Repositorio Soberano.",
         spreadsheetId: SPREADSHEET_ID,
         timestamp: new Date().toISOString()
       });
@@ -303,7 +303,7 @@ function doPost(e) {
 
     return createJsonResponse({
       status: "success",
-      message: "Registro almacenado exitosamente en el Spreadsheet institucional.",
+      message: "Registro almacenado exitosamente en el Repositorio Soberano institucional\.",
       id: nextRowId,
       instrument: instrument,
       timestamp: timestampStr

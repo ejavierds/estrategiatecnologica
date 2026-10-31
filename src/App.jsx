@@ -8,6 +8,7 @@ import InterpreterView from './components/views/InterpreterView';
 import LegalView from './components/views/LegalView';
 import UserGuideView from './components/views/UserGuideView';
 import SettingsModal from './components/views/SettingsModal';
+import ResearcherContact from './components/common/ResearcherContact';
 import { fetchAllRecords, getLocalRecords } from './services/api';
 import { Sparkles, Database, WifiOff } from 'lucide-react';
 
@@ -18,7 +19,7 @@ export default function App() {
   const [syncStatus, setSyncStatus] = useState(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
-  // Carga de registros (GAS / Local)
+  // Carga de registros (Remoto Soberano / Local)
   const loadData = useCallback(async () => {
     setLoading(true);
     try {
@@ -55,7 +56,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans selection:bg-red-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-sans selection:bg-red-500 selection:text-white relative">
       
       {/* Barra de Navegación Principal */}
       <Navbar
@@ -72,7 +73,7 @@ export default function App() {
           <div className="mb-6 p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs rounded-xl flex items-center justify-between">
             <span className="flex items-center gap-1.5 font-medium">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-              Sincronizado con Google Sheets (ID: 1pTxVBSWoSmOH02h...)
+              Sincronizado con el Repositorio de Datos Soberano (ID: 1pTxVBSWoSmOH02h...)
             </span>
             <button
               onClick={() => setIsSettingsOpen(true)}
@@ -138,12 +139,15 @@ export default function App() {
         }}
       />
 
-      {/* Modal de Conexión con Google Sheets y Apps Script */}
+      {/* Modal de Conexión y Configuración Soberana */}
       <SettingsModal
         isOpen={isSettingsOpen}
         onClose={() => setIsSettingsOpen(false)}
         onDataReset={loadData}
       />
+
+      {/* Botón Flotante de Contacto Directo con el Investigador (WhatsApp y Telegram) */}
+      <ResearcherContact mode="floating" />
 
     </div>
   );

@@ -2,12 +2,17 @@
 ### Plataforma de Integración Tecnológica para la Transformación de la Gestión Social y la Emancipación de Familias Vulnerables
 
 **Investigador / Maestrante:** Ing. Edery Javier Rodríguez Alvarado (C.I. V-17859495)  
+**Contacto Directo:**
+*   💬 **WhatsApp:** [+58 426 735 5056](https://wa.me/584267355056?text=Hola%20Ing.%20Edery%20Rodr%C3%ADguez,%20me%20comunico%20desde%20la%20Plataforma%20de%20Praxis%20Social%20Iribarren)
+*   ✈️ **Telegram:** [+58 426 735 5056](https://t.me/+584267355056)
+
 **Tutor Académico:** Dr. Abel José Pérez Wilke (C.I. V-10844246)  
 **Institución:** Universidad Bolivariana de Venezuela (UBV) — Eje Geopolítico Regional Precursor José Leonardo Chirinos (Sede Estado Lara)  
 **Programa:** Maestría en Ciencias para el Desarrollo Estratégico (Cohorte VI)  
 **Línea de Investigación:** Dominio Tecnológico para el Desarrollo Endógeno  
 **Sub-línea:** Soberanía y Desarrollo Tecnológico  
 **Paradigma Metodológico:** Marxista Heterodoxo / Dialéctico-Crítico  
+**Enlace Oficial en Producción:** [https://estrategiatecnologica.vercel.app/](https://estrategiatecnologica.vercel.app/)
 
 ---
 
@@ -26,18 +31,18 @@ Su objetivo es develar y superar la contradicción fundamental entre:
 *   **Frontend SPA:** React 19, Tailwind CSS (arquitectura limpia, minimalista y responsiva).
 *   **Visualización de Datos:** Recharts (Gráficos Donut/Pie, Gráficos de Barras, Métricas y Tablas interactivas).
 *   **Iconografía y Gráficos:** Lucide-React y SVG minimalista de la **Estrella Roja** (`⭐`).
-*   **Backend / API REST:** Google Apps Script (GAS) con métodos `doGet` y `doPost`.
-*   **Base de Datos Soberana:** Google Spreadsheets.
-    *   **ID de la Hoja Oficial:** `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`
-    *   Hojas automáticas estructuradas: `Entrevistas`, `GruposFocales`, `MatrizEtnografica`, `AuditoriaSistemas`, `MapeoActores`.
+*   **Backend / API REST:** API de Integración Soberana con métodos `doGet` y `doPost`.
+*   **Base de Datos Soberana:** Repositorio Central de Datos.
+    *   **ID del Repositorio Oficial:** `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`
+    *   Matrices estructuradas: `Entrevistas`, `GruposFocales`, `MatrizEtnografica`, `AuditoriaSistemas`, `MapeoActores`.
 *   **Persistencia Resiliente / Offline:** Memoria Soberana en `localStorage` que garantiza que el levantamiento en campo no se detenga aun sin conectividad a internet.
-*   **Despliegue Recomendado:** Vercel conectado vía repositorio de GitHub.
+*   **Despliegue Recomendado:** Servidor en la nube conectado vía repositorio de GitHub.
 
 ---
 
 ## 🧭 3. Estructura y Módulos de la Aplicación
 
-1.  **🏠 Inicio (Contexto de la Investigación):** Banner con los datos del maestrante, tutor y universidad; resumen de la contradicción problema, fundamentos teóricos (Marx, Varsavsky, Freire, Santos, Matus, Chávez) y accesos directos a los instrumentos.
+1.  **🏠 Inicio (Contexto de la Investigación):** Banner con los datos del maestrante, tutor y universidad; resumen de la contradicción problema, fundamentos teóricos (Marx, Varsavsky, Freire, Santos, Matus, Chávez), accesos directos a los instrumentos y botones de contacto telefónico directo vía WhatsApp y Telegram.
 2.  **📝 Módulo de Instrumentos (Formularios Dinámicos):**
     *   *Instrumento 1 (Entrevista en Profundidad):* Dirigido a tomadores de decisiones; evalúa Totalidad Concreta, Contradicción Capital-Trabajo/Burocracia, Mediaciones de Poder, Alienación vs Soberanía y Praxis/Síntesis.
     *   *Instrumento 2 (Grupo Focal):* Diálogo de saberes entre trabajadores sociales, técnicos de sistemas y vocerías comunales (Problematización, Nudos Críticos y Utopía Concreta).
@@ -53,8 +58,8 @@ Su objetivo es develar y superar la contradicción fundamental entre:
     *   Explorador de registros con buscador en tiempo real y exportación en formato JSON.
 4.  **🧠 Intérprete Dialéctico:** Motor cualitativo que analiza el lenguaje y los discursos recolectados, genera alertas críticas automáticas y estructura la síntesis dialéctica (Tesis, Antítesis y Síntesis / Negación de la Negación) lista para el Momento III del Trabajo de Grado.
 5.  **⚖️ Marco Legal y Ético:** Texto completo de Términos de Uso, Bases Legales venezolanas (CRBV, Ley de Infogobierno, Plan de la Patria 7T, Ley del Poder Popular) y Políticas de Privacidad Soberana.
-6.  **📘 Guía del Usuario:** Manual operativo paso a paso.
-7.  **⚙️ Configuración / Integración Google Sheets:** Visor de credenciales, comprobador de conectividad (Ping) y visor del script de backend.
+6.  **📘 Guía del Usuario:** Manual operativo paso a paso con canales directos de soporte al investigador.
+7.  **⚙️ Configuración / Sincronización de Datos:** Visor de credenciales, comprobador de conectividad (Ping) y visor del script de backend.
 
 ---
 
@@ -81,38 +86,30 @@ npm run build
 
 ---
 
-## ☁️ 5. Despliegue en Vercel vía GitHub
+## ☁️ 5. Despliegue en Servidor en la Nube vía GitHub
 
-1.  Crea un nuevo repositorio en tu cuenta de GitHub (ejemplo: `praxis-social-iribarren`).
-2.  Sube los archivos del proyecto:
-    ```bash
-    git init
-    git add .
-    git commit -m "Inicialización de la Plataforma Praxis Social Iribarren"
-    git branch -M main
-    git remote add origin https://github.com/TU_USUARIO/praxis-social-iribarren.git
-    git push -u origin main
-    ```
-3.  Ingresa a [Vercel](https://vercel.com) e inicia sesión con tu cuenta de GitHub.
-4.  Haz clic en **«Add New...» > «Project»**, selecciona el repositorio y pulsa **«Deploy»**. Vercel detectará Vite automáticamente y desplegará la aplicación en segundos con certificado SSL gratuito.
+1.  Repositorio oficial: [https://github.com/ejavierds/estrategiatecnologica](https://github.com/ejavierds/estrategiatecnologica)
+2.  Configuración de sincronización automática:
+    *   Cada confirmación (`git push`) en la rama `main` compila y publica los cambios de forma instantánea.
+    *   Las variables de entorno se leen desde el archivo de configuración institucional.
 
 ---
 
-## 📜 6. Configuración de Google Apps Script (Backend)
+## 📜 6. Configuración del Servicio de Backend (`Código.gs`)
 
-1.  Abre el documento de Google Sheets (ID: `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`).
-2.  En el menú superior de la hoja de cálculo, ve a: **Extensiones > Apps Script**.
-3.  Borra el contenido predeterminado y copia todo el código contenido en el archivo:
+1.  Abre el documento del Repositorio Central de Datos (ID: `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`).
+2.  En el menú superior, ve a: **Extensiones > Editor de Scripts**.
+3.  Copia el código provisto en el archivo:
     `google-apps-script/Codigo.gs`
 4.  Haz clic en el ícono del disquete **Guardar**.
 5.  Pulsa el botón azul **Implementar > Nueva implementación**.
 6.  En el engranaje ⚙️, selecciona **Aplicación web**.
-7.  Configuración obligatoria:
+7.  Configuración:
     *   **Descripción:** `API Praxis Social Iribarren v1`
-    *   **Ejecutar como:** `Yo (tu correo electrónico)`
-    *   **Quién tiene acceso:** `Cualquiera (Anyone)` *(Indispensable para permitir la recepción de datos desde la web)*
-8.  Haz clic en **Implementar**, concede los permisos requeridos de Google Drive y copia la URL que termina en `/exec`.
-9.  Abre tu aplicación web en el navegador, ve al menú **⚙️ Configuración**, pega la URL y haz clic en **«Probar Conexión (Ping)»** y **«Guardar URL»**.
+    *   **Ejecutar como:** `Yo (tu correo institucional)`
+    *   **Quién tiene acceso:** `Cualquiera (Anyone)` *(Para permitir la recepción y consulta de diagnósticos)*
+8.  Haz clic en **Implementar**, autoriza los permisos requeridos y copia la URL que termina en `/exec`.
+9.  Abre la aplicación web, ve al menú **⚙️ Configuración**, pega la URL y haz clic en **«Probar Conexión (Ping)»** y **«Guardar URL»**.
 
 ---
 

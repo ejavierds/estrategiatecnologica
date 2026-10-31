@@ -61,7 +61,7 @@ export default function EthnographyForm({ onRecordSubmitted }) {
       const res = await submitInstrumentRecord('etnografia', formData);
       setStatusMessage({
         type: 'success',
-        text: `¡Registro etnográfico guardado! Código: ${res.recordId}. Almacenado en la memoria soberana${res.gasSynced ? ' y sincronizado con Google Spreadsheets' : ''}.`
+        text: `¡Registro etnográfico guardado! Código: ${res.recordId}. Almacenado en la memoria soberana${res.gasSynced ? ' y sincronizado con la Base de Datos Soberana' : ''}.`
       });
 
       setFormData(prev => ({

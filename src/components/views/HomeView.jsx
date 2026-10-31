@@ -16,19 +16,25 @@ import {
   Share2,
   Copy,
   Check,
-  ExternalLink
+  ExternalLink,
+  MessageCircle,
+  Send,
+  Phone
 } from 'lucide-react';
 
 export default function HomeView({ onNavigate, recordsCount }) {
   const [copiedLink, setCopiedLink] = useState(false);
   const shareUrl = "https://estrategiatecnologica.vercel.app/";
   const shareTitle = "Praxis Social Iribarren ⭐ - Estrategia de Integración Tecnológica (UBV)";
+  const whatsappUrl = "https://wa.me/584267355056?text=Hola%20Ing.%20Edery%20Rodr%C3%ADguez,%20me%20comunico%20desde%20la%20Plataforma%20de%20Praxis%20Social%20Iribarren";
+  const telegramUrl = "https://t.me/+584267355056";
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(shareUrl);
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2500);
   };
+
   const instruments = [
     {
       num: '1',
@@ -104,24 +110,51 @@ export default function HomeView({ onNavigate, recordsCount }) {
             </p>
           </div>
 
-          {/* Ficha Académica del Maestrante y Tutor */}
+          {/* Ficha Académica del Maestrante y Tutor con Botones de Contacto */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-4 border-t border-red-900/40 text-xs text-slate-300">
-            <div className="bg-slate-900/60 p-3 rounded-xl border border-slate-800/80">
-              <span className="text-slate-400 block text-[11px]">Investigador / Maestrante:</span>
-              <strong className="text-white text-sm">Ing. Edery Javier Rodríguez Alvarado</strong>
-              <span className="block text-[11px] text-red-300">C.I. V-17859495</span>
+            <div className="bg-slate-900/70 p-3.5 rounded-2xl border border-slate-800 flex flex-col justify-between">
+              <div>
+                <span className="text-slate-400 block text-[11px]">Investigador / Maestrante:</span>
+                <strong className="text-white text-sm block">Ing. Edery Javier Rodríguez Alvarado</strong>
+                <span className="block text-[11px] text-red-300">C.I. V-17859495</span>
+              </div>
+
+              {/* Botones directos de contacto al investigador */}
+              <div className="pt-3 mt-2 border-t border-slate-800/80 flex items-center gap-2">
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] transition shadow-xs"
+                  title="Contactar al Ing. Edery Rodríguez por WhatsApp (+58 426 735 5056)"
+                >
+                  <MessageCircle className="w-3.5 h-3.5 fill-current" />
+                  <span>WhatsApp</span>
+                </a>
+                <a
+                  href={telegramUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-sky-500 hover:bg-sky-600 text-white font-bold text-[11px] transition shadow-xs"
+                  title="Contactar al Ing. Edery Rodríguez por Telegram (+58 426 735 5056)"
+                >
+                  <Send className="w-3 h-3" />
+                  <span>Telegram</span>
+                </a>
+              </div>
             </div>
 
-            <div className="bg-slate-900/60 p-3 rounded-xl border border-slate-800/80">
+            <div className="bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800/80">
               <span className="text-slate-400 block text-[11px]">Tutor Académico:</span>
-              <strong className="text-white text-sm">Dr. Abel José Pérez Wilke</strong>
+              <strong className="text-white text-sm block">Dr. Abel José Pérez Wilke</strong>
               <span className="block text-[11px] text-slate-400">C.I. V-10844246</span>
+              <span className="block text-[11px] text-slate-400 mt-2">Doctor en Ciencias para el Desarrollo Estratégico</span>
             </div>
 
-            <div className="bg-slate-900/60 p-3 rounded-xl border border-slate-800/80 sm:col-span-2 lg:col-span-1">
+            <div className="bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800/80 sm:col-span-2 lg:col-span-1">
               <span className="text-slate-400 block text-[11px]">Línea y Enfoque:</span>
-              <span className="text-white font-medium">Dominio Tecnológico para el Desarrollo Endógeno</span>
-              <span className="block text-[11px] text-amber-300">Paradigma Marxista Heterodoxo</span>
+              <span className="text-white font-medium block">Dominio Tecnológico para el Desarrollo Endógeno</span>
+              <span className="block text-[11px] text-amber-300 mt-1">Paradigma Marxista Heterodoxo</span>
             </div>
           </div>
 
@@ -155,7 +188,7 @@ export default function HomeView({ onNavigate, recordsCount }) {
               rel="noreferrer"
               className="inline-flex items-center gap-1.5 px-4 py-3.5 rounded-xl bg-slate-900/90 hover:bg-black text-slate-200 font-semibold text-xs border border-slate-700 transition"
             >
-              <span>GitHub: ejavierds/estrategiatecnologica</span>
+              <span>GitHub Oficial</span>
             </a>
           </div>
 
@@ -322,7 +355,7 @@ export default function HomeView({ onNavigate, recordsCount }) {
                 Orientaciones Metodológicas
               </p>
               <p className="text-xs text-slate-300 leading-relaxed mt-2">
-                Instrucciones detalladas sobre cómo llenar los formularios, interpretar el conteo reflexivo y desplegar en Vercel y Google Sheets.
+                Instrucciones detalladas sobre cómo llenar los formularios, interpretar el conteo reflexivo y conectar la base de datos soberana.
               </p>
             </div>
 
@@ -356,7 +389,7 @@ export default function HomeView({ onNavigate, recordsCount }) {
               className="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-xl transition shadow-xs"
             >
               {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copiedLink ? '¡Enlace Copiado!' : 'Copiar Enlace Vercel'}</span>
+              <span>{copiedLink ? '¡Enlace Copiado!' : 'Copiar Enlace Oficial'}</span>
             </button>
           </div>
         </div>
@@ -398,6 +431,7 @@ export default function HomeView({ onNavigate, recordsCount }) {
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 px-3 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl transition"
                 >
+                  <MessageCircle className="w-3.5 h-3.5 fill-current" />
                   <span>WhatsApp</span>
                   <ExternalLink className="w-3 h-3 opacity-80" />
                 </a>
@@ -408,6 +442,7 @@ export default function HomeView({ onNavigate, recordsCount }) {
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 px-3 py-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold text-xs rounded-xl transition"
                 >
+                  <Send className="w-3.5 h-3.5" />
                   <span>Telegram</span>
                   <ExternalLink className="w-3 h-3 opacity-80" />
                 </a>

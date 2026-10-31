@@ -65,7 +65,7 @@ export default function InterviewForm({ onRecordSubmitted }) {
       const res = await submitInstrumentRecord('entrevista', formData);
       setStatusMessage({
         type: 'success',
-        text: `¡Entrevista registrada exitosamente! Código: ${res.recordId}. Almacenada en la memoria soberana${res.gasSynced ? ' y sincronizada con Google Spreadsheets' : ''}.`
+        text: `¡Entrevista registrada exitosamente! Código: ${res.recordId}. Almacenada en la memoria soberana${res.gasSynced ? ' y sincronizada con la Base de Datos Soberana' : ''}.`
       });
 
       // Limpiar formulario excepto institución y fecha

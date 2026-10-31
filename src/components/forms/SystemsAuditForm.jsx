@@ -69,7 +69,7 @@ export default function SystemsAuditForm({ onRecordSubmitted }) {
       const res = await submitInstrumentRecord('auditoria', formData);
       setStatusMessage({
         type: 'success',
-        text: `¡Auditoría del sistema guardada! Código: ${res.recordId}. Almacenada en la memoria soberana${res.gasSynced ? ' y sincronizada con Google Spreadsheets' : ''}.`
+        text: `¡Auditoría del sistema guardada! Código: ${res.recordId}. Almacenada en la memoria soberana${res.gasSynced ? ' y sincronizada con la Base de Datos Soberana' : ''}.`
       });
 
       setFormData(prev => ({
