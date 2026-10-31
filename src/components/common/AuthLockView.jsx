@@ -61,7 +61,7 @@ export default function AuthLockView({ onUnlocked, onCancel, title = "Módulo Pr
             {title}
           </h2>
           <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-            Las estadísticas consolidadas, auditorías institucionales y configuraciones del repositorio requieren validación de credencial de investigación.
+            Las estadísticas consolidadas, auditorías institucionales y configuraciones de la base de datos requieren validación de credencial de investigación.
           </p>
         </div>
       </div>

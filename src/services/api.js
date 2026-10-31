@@ -1,5 +1,5 @@
 /**
- * SERVICIO DE COMUNICACIÓN CON EL REPOSITORIO REMOTO Y PERSISTENCIA SOBERANA LOCAL
+ * SERVICIO DE COMUNICACIÓN CON LA BASE DE DATOS SOBERANA Y PERSISTENCIA LOCAL
  * Proyecto: Estrategia de Integración Tecnológica (Municipio Iribarren)
  * Investigador: Ing. Edery Javier Rodríguez Alvarado
  */
@@ -216,7 +216,7 @@ function mergeRecords(remoteList = [], localList = [], instrument) {
     const key = item.id_registro || `${item.fecha}_${item.institucion || item.actor || item.sistema || Math.random()}`;
     map.set(key, item);
   });
-  // 2. Sobrescribir / agregar remotos (tienen prioridad porque provienen del repositorio central)
+  // 2. Sobrescribir / agregar remotos (tienen prioridad porque provienen de la base de datos central)
   normRemote.forEach(item => {
     const key = item.id_registro || `${item.fecha}_${item.institucion || item.actor || item.sistema || Math.random()}`;
     map.set(key, item);
@@ -305,7 +305,7 @@ export async function fetchAllRecords() {
       return {
         source: 'gas',
         data: merged,
-        message: 'Datos sincronizados exitosamente desde el Repositorio de Datos Soberano.'
+        message: 'Datos sincronizados exitosamente desde la Base de Datos Soberana.'
       };
     } else {
       throw new Error(json.message || 'Respuesta remota sin éxito');
@@ -315,7 +315,7 @@ export async function fetchAllRecords() {
     return {
       source: 'local',
       data: localData,
-      warning: `No se pudo conectar al Repositorio Remoto (${err.message}). Utilizando copia de seguridad local.`,
+      warning: `No se pudo conectar a la Base de Datos Remota (${err.message}). Utilizando copia de seguridad local.`,
       spreadsheetId: SPREADSHEET_ID
     };
   }

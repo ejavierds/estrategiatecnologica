@@ -101,7 +101,7 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
       if (res.ok) {
         text = await res.text();
       } else {
-        text = `// ID DEL REPOSITORIO DE DATOS SOBERANO: ${SPREADSHEET_ID}\n// Revisa el archivo google-apps-script/Codigo.gs incluido en el repositorio.`;
+        text = `// ID DE LA BASE DE DATOS SOBERANA: ${SPREADSHEET_ID}\n// Revisa el archivo google-apps-script/Codigo.gs.`;
       }
       navigator.clipboard.writeText(text);
       setCodeCopied(true);
@@ -163,11 +163,11 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
         {/* Cuerpo del Modal con Scroll */}
         <div className="p-6 overflow-y-auto space-y-6 text-xs sm:text-sm">
           
-          {/* Identificación del Repositorio */}
+          {/* Identificación de la Base de Datos */}
           <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200/80 space-y-2">
             <div className="flex items-center justify-between">
               <span className="font-bold text-slate-900 text-xs uppercase tracking-wide">
-                ID Oficial del Repositorio de Datos Soberano
+                ID Oficial de la Base de Datos Soberana
               </span>
               <a
                 href={`https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/edit`}
@@ -175,7 +175,7 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
                 rel="noreferrer"
                 className="inline-flex items-center gap-1 text-[11px] font-bold text-red-600 hover:underline"
               >
-                <span>Abrir Repositorio de Datos</span>
+                <span>Abrir Base de Datos Soberana</span>
                 <ExternalLink className="w-3 h-3" />
               </a>
             </div>
@@ -246,7 +246,7 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
             <div className="flex items-center justify-between">
               <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wide flex items-center gap-1.5">
                 <FileCode className="w-4 h-4 text-red-600" />
-                <span>Pasos para Instalar «Código.gs» en el Repositorio Central</span>
+                <span>Pasos para Instalar «Código.gs» en la Base de Datos Central</span>
               </h4>
 
               <button
@@ -259,7 +259,7 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
             </div>
 
             <ol className="list-decimal list-inside space-y-1.5 text-xs text-slate-600 leading-relaxed bg-slate-50 p-4 rounded-xl border border-slate-200">
-              <li>Abre el documento del Repositorio de Datos (ID: <code className="font-mono text-red-600">1pTxVBSWoSm...</code>).</li>
+              <li>Abre el documento de la Base de Datos Soberana (ID: <code className="font-mono text-red-600">1pTxVBSWoSm...</code>).</li>
               <li>En el menú superior, ve a <strong>Extensiones &gt; Editor de Scripts</strong>.</li>
               <li>Reemplaza el contenido del archivo con el código provisto en <code className="font-mono text-slate-800">google-apps-script/Codigo.gs</code>.</li>
               <li>Haz clic en <strong>Implementar &gt; Nueva implementación</strong>.</li>

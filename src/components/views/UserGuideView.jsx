@@ -84,7 +84,7 @@ export default function UserGuideView({ onNavigate }) {
                 <strong>⚖️ Bases Legales:</strong> Términos de uso, marco constitucional venezolano y políticas de privacidad y soberanía de datos.
               </li>
               <li className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <strong>⚙️ Sincronización Soberana:</strong> Verificación de conexión con el repositorio central de datos. <span className="text-red-700 font-semibold">(Acceso protegido)</span>.
+                <strong>⚙️ Sincronización Soberana:</strong> Verificación de conexión con la base de datos soberana. <span className="text-red-700 font-semibold">(Acceso protegido)</span>.
               </li>
             </ul>
           </div>
@@ -121,7 +121,7 @@ export default function UserGuideView({ onNavigate }) {
                 <strong>Validación de Palabras Mínimas:</strong> Para evitar respuestas vacías o monosilábicas como «Sí» o «No», cada campo cualitativo exige un mínimo de 10 palabras reflexivas. El indicador cambiará a color verde cuando alcances la densidad analítica requerida.
               </li>
               <li>
-                Marca la casilla de <strong>«Consentimiento Informado y Validación Metodológica»</strong> y haz clic en <strong>Guardar</strong>. Los datos se almacenarán en la memoria soberana y en el repositorio central de datos.
+                Marca la casilla de <strong>«Consentimiento Informado y Validación Metodológica»</strong> y haz clic en <strong>Guardar</strong>. Los datos se almacenarán en la memoria soberana y en la base de datos central.
               </li>
             </ol>
           </div>

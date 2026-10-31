@@ -1,7 +1,7 @@
 # Praxis Social Iribarren ⭐
 ### Plataforma de Integración Tecnológica para la Transformación de la Gestión Social y la Emancipación de Familias Vulnerables
 
-**Investigador / Maestrante:** Ing. Edery Javier Rodríguez Alvarado (C.I. V-17859495)  
+**Investigador / Maestrante:** Ing. Edery Javier Rodríguez Alvarado  
 **Perfil Científico ORCID:** [https://orcid.org/0000-0003-1369-9036](https://orcid.org/0000-0003-1369-9036)  
 **Diseño y Desarrollo:** [ejavierds](https://ejavierds.vercel.app)  
 
@@ -9,7 +9,7 @@
 *   💬 **WhatsApp:** [Enviar mensaje directo](https://wa.me/584267355056?text=Hola%20Ing.%20Edery%20Rodr%C3%ADguez,%20me%20comunico%20desde%20la%20Plataforma%20de%20Praxis%20Social%20Iribarren)
 *   ✈️ **Telegram:** [Iniciar chat directo](https://t.me/+584267355056)
 
-**Tutor Académico:** Dr. Abel José Pérez Wilke (C.I. V-10844246)  
+**Tutor Académico:** Dr. Abel José Pérez Wilke  
 **Institución:** Universidad Bolivariana de Venezuela (UBV) — Eje Geopolítico Regional Precursor José Leonardo Chirinos (Sede Estado Lara)  
 **Programa:** Maestría en Ciencias para el Desarrollo Estratégico (Cohorte VI)  
 **Línea de Investigación:** Dominio Tecnológico para el Desarrollo Endógeno  
@@ -34,7 +34,7 @@ Su objetivo es develar y superar la contradicción fundamental entre:
 Por criterios de rigurosidad metodológica, custodia de datos y preservación de la integridad del diagnóstico, los siguientes módulos se encuentran protegidos mediante contraseña de autorización investigativa:
 
 *   **📊 Analítica Práxica (Dashboard Estadístico)**
-*   **⚙️ Configuración del Repositorio de Datos y Parámetros de Sincronización**
+*   **⚙️ Configuración de la Base de Datos y Parámetros de Sincronización**
 
 **Contraseña Oficial:**
 ```
@@ -50,11 +50,11 @@ Praxis_Marx_2026
 *   **Visualización de Datos:** Recharts (Gráficos Donut/Pie, Gráficos de Barras, Métricas y Tablas interactivas).
 *   **Iconografía y Gráficos:** Lucide-React y SVG minimalista de la **Estrella Roja** (`⭐`).
 *   **Backend / API REST:** API de Integración Soberana con métodos `doGet` y `doPost`.
-*   **Base de Datos Soberana:** Repositorio Central de Datos.
-    *   **ID del Repositorio Oficial:** `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`
+*   **Base de Datos Soberana:** Almacenamiento Centralizado de Datos.
+    *   **ID de la Base de Datos Oficial:** `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`
     *   Matrices estructuradas: `Entrevistas`, `GruposFocales`, `MatrizEtnografica`, `AuditoriaSistemas`, `MapeoActores`.
 *   **Persistencia Resiliente / Offline:** Memoria Soberana en `localStorage` que garantiza que el levantamiento en campo no se detenga aun sin conectividad a internet.
-*   **Despliegue Recomendado:** Servidor en la nube conectado vía repositorio de GitHub.
+*   **Despliegue Recomendado:** Servidor en la nube con integración continua soberana.
 
 ---
 
@@ -90,7 +90,7 @@ Praxis_Marx_2026
 
 ### Pasos
 ```bash
-# 1. Clonar o ingresar al directorio del proyecto
+# 1. Ingresar al directorio del proyecto
 cd "Web Estrategia Tecnologica"
 
 # 2. Instalar dependencias
@@ -105,12 +105,12 @@ npm run build
 
 ---
 
-## ☁️ 6. Despliegue en Servidor en la Nube vía GitHub
+## ☁️ 6. Despliegue en Servidor en la Nube y CI/CD
 
-1.  Repositorio oficial: [https://github.com/ejavierds/estrategiatecnologica](https://github.com/ejavierds/estrategiatecnologica)
+1.  Código fuente del proyecto gestionado con control de versiones y despliegue continuo.
 2.  Configuración de sincronización automática:
-    *   Cada confirmación (`git push`) en la rama `main` compila y publica los cambios de forma instantánea.
-    *   Las variables de entorno se leen desde el archivo de configuración institucional:
+    *   Cada confirmación en la rama principal compila y publica los cambios de forma instantánea.
+    *   Las variables de entorno se leen desde el panel de configuración:
         *   `VITE_APP_URL`: `https://estrategiatecnologica.vercel.app`
         *   `VITE_GAS_API_URL`: URL del Web App de sincronización remota
         *   `VITE_SPREADSHEET_ID`: `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`
@@ -120,7 +120,7 @@ npm run build
 
 ## 📜 7. Configuración del Servicio de Backend (`Código.gs`)
 
-1.  Abre el documento del Repositorio Central de Datos (ID: `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`).
+1.  Abre el documento de la Base de Datos Central (ID: `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`).
 2.  En el menú superior, ve a: **Extensiones > Editor de Scripts**.
 3.  Copia el código provisto en el archivo:
     `google-apps-script/Codigo.gs`

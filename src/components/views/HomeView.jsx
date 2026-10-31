@@ -118,7 +118,6 @@ export default function HomeView({ onNavigate, recordsCount }) {
               <div>
                 <span className="text-slate-400 block text-[11px]">Investigador / Maestrante:</span>
                 <strong className="text-white text-sm block">Ing. Edery Javier Rodríguez Alvarado</strong>
-                <span className="block text-[11px] text-red-300">C.I. V-17859495</span>
                 <a
                   href={orcidUrl}
                   target="_blank"
@@ -161,7 +160,6 @@ export default function HomeView({ onNavigate, recordsCount }) {
             <div className="bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800/80">
               <span className="text-slate-400 block text-[11px]">Tutor Académico:</span>
               <strong className="text-white text-sm block">Dr. Abel José Pérez Wilke</strong>
-              <span className="block text-[11px] text-slate-400">C.I. V-10844246</span>
               <span className="block text-[11px] text-slate-400 mt-2">Doctor en Ciencias para el Desarrollo Estratégico</span>
             </div>
 
@@ -209,14 +207,12 @@ export default function HomeView({ onNavigate, recordsCount }) {
               <span>🧠 Intérprete Dialéctico</span>
             </button>
 
-            <a
-              href="https://github.com/ejavierds/estrategiatecnologica"
-              target="_blank"
-              rel="noreferrer"
+            <button
+              onClick={() => onNavigate('guide')}
               className="inline-flex items-center gap-1.5 px-4 py-3.5 rounded-xl bg-slate-900/90 hover:bg-black text-slate-200 font-semibold text-xs border border-slate-700 transition"
             >
-              <span>GitHub Oficial</span>
-            </a>
+              <span>📘 Guía del Usuario</span>
+            </button>
           </div>
 
         </div>
@@ -484,15 +480,12 @@ export default function HomeView({ onNavigate, recordsCount }) {
                   <ExternalLink className="w-3 h-3 opacity-80" />
                 </a>
 
-                <a
-                  href="https://github.com/ejavierds/estrategiatecnologica"
-                  target="_blank"
-                  rel="noreferrer"
+                <button
+                  onClick={() => onNavigate('legal')}
                   className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs rounded-xl transition border border-slate-200"
                 >
-                  <span>Repo GitHub</span>
-                  <ExternalLink className="w-3 h-3 opacity-80" />
-                </a>
+                  <span>⚖️ Marco Legal</span>
+                </button>
               </div>
             </div>
 

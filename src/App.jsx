@@ -73,7 +73,7 @@ export default function App() {
           <div className="mb-6 p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs rounded-xl flex items-center justify-between">
             <span className="flex items-center gap-1.5 font-medium">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-              Sincronizado con el Repositorio de Datos Soberano (ID: 1pTxVBSWoSmOH02h...)
+              Sincronizado con la Base de Datos Soberana (ID: 1pTxVBSWoSmOH02h...)
             </span>
             <button
               onClick={() => setIsSettingsOpen(true)}

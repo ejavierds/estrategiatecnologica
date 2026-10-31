@@ -421,7 +421,7 @@ export default function DashboardView({ data, onRefresh, loading, onNavigate }) 
               Explorador de Datos Recolectados
             </h3>
             <p className="text-xs text-slate-500">
-              Registros alojados en la memoria soberana y vinculados con el Repositorio Soberano ID: {SPREADSHEET_ID.substring(0, 16)}...
+              Registros alojados en la memoria soberana y vinculados con la Base de Datos Soberana ID: {SPREADSHEET_ID.substring(0, 16)}...
             </p>
           </div>
 

@@ -7,7 +7,7 @@
  * TUTOR: DR. ABEL JOSÉ PÉREZ WILKE
  * =========================================================================================
  * BACKEND API REST: INTEGRACION Y PERSISTENCIA SOBERANA
- * ID DEL REPOSITORIO DE DATOS: 1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec
+ * ID DE LA BASE DE DATOS SOBERANA: 1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec
  * =========================================================================================
  */
 
@@ -20,6 +20,15 @@ var SHEET_NAMES = {
   etnografia: "MatrizEtnografica",
   auditoria: "AuditoriaSistemas",
   mapeo_actores: "MapeoActores"
+};
+
+// Prefijos oficiales estandarizados
+var PREFIX_MAP = {
+  entrevista: "ENT",
+  grupo_focal: "GF",
+  etnografia: "ETN",
+  auditoria: "AUD",
+  mapeo_actores: "ACT"
 };
 
 // Encabezados estandarizados para cada instrumento
@@ -97,7 +106,7 @@ function getOrCreateSheet(ss, sheetKey) {
 }
 
 /**
- * Helper para responder en JSON con CORS habilitado
+ * Helper para responder en JSON con ContentService
  */
 function createJsonResponse(data) {
   return ContentService.createTextOutput(JSON.stringify(data))
@@ -115,7 +124,7 @@ function doGet(e) {
     if (action === "ping") {
       return createJsonResponse({
         status: "success",
-        message: "API Praxis Social Iribarren operativa y conectada al Repositorio Soberano.",
+        message: "API Praxis Social Iribarren operativa y conectada a la Base de Datos Soberana.",
         spreadsheetId: SPREADSHEET_ID,
         timestamp: new Date().toISOString()
       });
@@ -238,7 +247,7 @@ function doPost(e) {
 
     var now = new Date();
     var timestampStr = Utilities.formatDate(now, "America/Caracas", "yyyy-MM-dd HH:mm:ss");
-    var prefix = instrument.substring(0, 3).toUpperCase();
+    var prefix = PREFIX_MAP[instrument] || instrument.substring(0, 3).toUpperCase();
     var nextRowId = prefix + "-" + Utilities.formatString("%04d", sheet.getLastRow());
 
     var rowToAppend = [];
@@ -322,7 +331,7 @@ function doPost(e) {
 
     return createJsonResponse({
       status: "success",
-      message: "Registro almacenado exitosamente en el Repositorio Soberano institucional.",
+      message: "Registro almacenado exitosamente en la Base de Datos Soberana institucional.",
       id: nextRowId,
       instrument: instrument,
       timestamp: timestampStr

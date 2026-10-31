@@ -127,7 +127,7 @@ export default function Navbar({ activeTab, setActiveTab, onOpenSettings }) {
                   ? 'bg-emerald-50 text-emerald-800 border-emerald-300 hover:bg-emerald-100'
                   : 'bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200'
               }`}
-              title="Configurar sincronización con el Repositorio de Datos Soberano"
+              title="Configurar sincronización con la Base de Datos Soberana"
             >
               {gasUrl ? (
                 <>

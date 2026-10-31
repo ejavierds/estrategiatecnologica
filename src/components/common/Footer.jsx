@@ -55,7 +55,6 @@ export default function Footer({ onNavigate }) {
               <div>
                 <span className="text-slate-500 block">Investigador:</span>
                 <strong className="text-slate-200">Ing. Edery Javier Rodríguez Alvarado</strong>
-                <span className="block text-[11px] text-slate-400">C.I. V-17859495</span>
 
                 {/* Enlace Oficial a ORCID */}
                 <a
@@ -100,7 +99,6 @@ export default function Footer({ onNavigate }) {
               <div className="pt-2">
                 <span className="text-slate-500 block">Tutor de Proyecto:</span>
                 <strong className="text-slate-200">Dr. Abel José Pérez Wilke</strong>
-                <span className="block text-[11px] text-slate-400">C.I. V-10844246</span>
               </div>
               <div className="pt-1">
                 <span className="text-slate-500 block">Institución:</span>
@@ -146,7 +144,7 @@ export default function Footer({ onNavigate }) {
               <li className="pt-2 text-[11px] text-slate-500">
                 Base de Datos vinculada:
                 <div className="font-mono text-[10px] text-slate-400 bg-slate-800/80 p-1.5 rounded mt-1 truncate border border-slate-700/60">
-                  Repositorio Soberano: 1pTxVBSWoSmOH02h9...
+                  Base de Datos Soberana: 1pTxVBSWoSmOH02h9...
                 </div>
               </li>
             </ul>
