@@ -7,7 +7,7 @@
  * TUTOR: DR. ABEL JOSÉ PÉREZ WILKE
  * =========================================================================================
  * BACKEND API REST: INTEGRACION Y PERSISTENCIA SOBERANA
- * ID DE LA HOJA DE CÁLCULO: 1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec
+ * ID DEL REPOSITORIO DE DATOS: 1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec
  * =========================================================================================
  */
 
@@ -106,10 +106,6 @@ function createJsonResponse(data) {
 
 /**
  * Endpoint GET: Consultar registros y estadísticas
- * Parámetros soportados:
- * - action=ping (Prueba de conectividad)
- * - action=getAll (Retorna todos los instrumentos en un solo JSON)
- * - action=getByInstrument&instrument=entrevista|grupo_focal|etnografia|auditoria|mapeo_actores
  */
 function doGet(e) {
   try {
@@ -160,7 +156,7 @@ function doGet(e) {
 }
 
 /**
- * Lee los datos de una hoja y los formatea como array de objetos
+ * Lee los datos de una hoja y los formatea como array de objetos con claves canónicas y alias
  */
 function readSheetData(ss, sheetKey) {
   var sheet = getOrCreateSheet(ss, sheetKey);
@@ -178,13 +174,36 @@ function readSheetData(ss, sheetKey) {
   for (var i = 1; i < values.length; i++) {
     var rowObj = {};
     for (var j = 0; j < headers.length; j++) {
-      var headerKey = headers[j]
-        .toString()
+      var rawHeader = headers[j].toString();
+      var headerKey = rawHeader
         .toLowerCase()
         .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]/g, "_")
+        .replace(/[^a-z0-9]+/g, "_")
         .replace(/^_+|_+$/g, "");
-      rowObj[headerKey] = values[i][j];
+      
+      var val = values[i][j];
+      rowObj[headerKey] = val;
+
+      // Generar alias directos para asegurar compatibilidad total con la UI
+      if (headerKey.indexOf("pregunta_1") === 0) rowObj["p1_totalidad"] = val;
+      if (headerKey.indexOf("pregunta_2") === 0) rowObj["p2_contradiccion"] = val;
+      if (headerKey.indexOf("pregunta_3") === 0) rowObj["p3_mediaciones"] = val;
+      if (headerKey.indexOf("pregunta_4") === 0) rowObj["p4_alienacion"] = val;
+      if (headerKey.indexOf("pregunta_5") === 0) rowObj["p5_praxis"] = val;
+      if (headerKey.indexOf("cargo") === 0) rowObj["cargo"] = val;
+      if (headerKey.indexOf("arquitectura") === 0) rowObj["arquitectura"] = val;
+      if (headerKey.indexOf("capacidad_de_interoperabilidad") === 0) rowObj["interoperabilidad"] = val;
+      if (headerKey.indexOf("duplicidad") === 0) rowObj["duplicidad"] = val;
+      if (headerKey.indexOf("actor") === 0) rowObj["actor"] = val;
+      if (headerKey.indexOf("posicion") === 0) rowObj["posicion"] = val;
+      if (headerKey.indexOf("recursos_de_poder") === 0) rowObj["recursos_poder"] = val;
+      if (headerKey.indexOf("categoria") === 0) rowObj["categoria"] = val;
+      if (headerKey.indexOf("descripcion") === 0) rowObj["descripcion"] = val;
+      if (headerKey.indexOf("interpretacion") === 0) rowObj["interpretacion"] = val;
+      if (headerKey.indexOf("analisis") === 0) rowObj["notas_discurso"] = val;
+      if (headerKey.indexOf("actores") === 0) rowObj["actores"] = val;
+      if (headerKey.indexOf("sistema") === 0) rowObj["sistema"] = val;
+      if (headerKey.indexOf("institucion") === 0) rowObj["institucion"] = val;
     }
     rows.push(rowObj);
   }
@@ -231,12 +250,12 @@ function doPost(e) {
           timestampStr,
           payload.fecha || Utilities.formatDate(now, "America/Caracas", "yyyy-MM-dd"),
           payload.institucion || "",
-          payload.cargo || "",
-          payload.p1_totalidad || "",
-          payload.p2_contradiccion || "",
-          payload.p3_mediaciones || "",
-          payload.p4_alienacion || "",
-          payload.p5_praxis || "",
+          payload.cargo || payload.cargo_del_informante || "",
+          payload.p1_totalidad || payload.pregunta_1_totalidad_concreta || "",
+          payload.p2_contradiccion || payload.pregunta_2_contradiccion_capital_trabajo_burocracia || "",
+          payload.p3_mediaciones || payload.pregunta_3_mediaciones_y_poder || "",
+          payload.p4_alienacion || payload.pregunta_4_alienacion_vs_soberania || "",
+          payload.p5_praxis || payload.pregunta_5_praxis_sintesis || "",
           payload.consentimiento ? "Sí (Aceptado)" : "No"
         ];
         break;
@@ -247,10 +266,10 @@ function doPost(e) {
           timestampStr,
           payload.fecha || Utilities.formatDate(now, "America/Caracas", "yyyy-MM-dd"),
           payload.lugar || "",
-          payload.actores || "",
-          payload.fase1_problematizacion || "",
-          payload.fase2_nudos_criticos || "",
-          payload.fase3_utopia_concreta || "",
+          payload.actores || payload.actores_participantes || "",
+          payload.fase1_problematizacion || payload.fase_1_problematizacion_inicial || "",
+          payload.fase2_nudos_criticos || payload.fase_2_identificacion_de_nudos_criticos || "",
+          payload.fase3_utopia_concreta || payload.fase_3_construccion_de_la_utopia_concreta || "",
           payload.consentimiento ? "Sí (Aceptado)" : "No"
         ];
         break;
@@ -261,10 +280,10 @@ function doPost(e) {
           timestampStr,
           payload.fecha || Utilities.formatDate(now, "America/Caracas", "yyyy-MM-dd"),
           payload.lugar || "",
-          payload.categoria || "",
-          payload.descripcion_fenomenologica || "",
-          payload.interpretacion_critica || "",
-          payload.notas_discurso || "",
+          payload.categoria || payload.categoria_vinculada || "",
+          payload.descripcion_fenomenologica || payload.descripcion || "",
+          payload.interpretacion_critica || payload.interpretacion || "",
+          payload.notas_discurso || payload.analisis_del_discurso || "",
           payload.consentimiento ? "Sí (Aceptado)" : "No"
         ];
         break;
@@ -273,13 +292,13 @@ function doPost(e) {
         rowToAppend = [
           nextRowId,
           timestampStr,
-          payload.sistema || "",
-          payload.institucion || "",
+          payload.sistema || payload.sistema_plataforma || "",
+          payload.institucion || payload.institucion_responsable || "",
           payload.arquitectura || "",
-          payload.interoperabilidad || "",
-          payload.duplicidad || "",
-          payload.contradiccion_infogobierno || "",
-          payload.observaciones || "",
+          payload.interoperabilidad || payload.capacidad_de_interoperabilidad || "",
+          payload.duplicidad || payload.duplicidad_de_datos_identificada || "",
+          payload.contradiccion_infogobierno || payload.contradiccion_con_ley_de_infogobierno || "",
+          payload.observaciones || payload.observaciones_tecnicas || "",
           payload.consentimiento ? "Sí (Aceptado)" : "No"
         ];
         break;
@@ -288,12 +307,12 @@ function doPost(e) {
         rowToAppend = [
           nextRowId,
           timestampStr,
-          payload.actor || "",
-          payload.recursos_poder || "",
-          payload.interes || "",
-          payload.posicion || "",
-          payload.discurso || "",
-          payload.estrategia_praxis || "",
+          payload.actor || payload.actor_social_politico || "",
+          payload.recursos_poder || payload.recursos_de_poder || "",
+          payload.interes || payload.interes_principal || "",
+          payload.posicion || payload.posicion_ante_la_integracion || "",
+          payload.discurso || payload.discurso_manifiesto || "",
+          payload.estrategia_praxis || payload.estrategia_de_abordaje || "",
           payload.consentimiento ? "Sí (Aceptado)" : "No"
         ];
         break;
@@ -303,7 +322,7 @@ function doPost(e) {
 
     return createJsonResponse({
       status: "success",
-      message: "Registro almacenado exitosamente en el Repositorio Soberano institucional\.",
+      message: "Registro almacenado exitosamente en el Repositorio Soberano institucional.",
       id: nextRowId,
       instrument: instrument,
       timestamp: timestampStr
