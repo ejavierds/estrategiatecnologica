@@ -1,0 +1,23 @@
+{
+  "name": "Praxis Social Iribarren ⭐",
+  "short_name": "Praxis Social",
+  "description": "Plataforma de Investigación y Diagnóstico Marxista para la Transformación de la Gestión Social y Soberanía Tecnológica en el Municipio Iribarren. UBV.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#DC2626",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/star.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}
