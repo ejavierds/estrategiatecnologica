@@ -37,7 +37,7 @@
       ]
     },
     {
-      "source": "/(og-image.png|og-image.jpg|twitter-card.png|twitter-card.jpg|whatsapp-preview.jpg|star.svg|site.webmanifest)",
+      "source": "/(og-image.png|og-image.jpg|og-image.webp|twitter-card.png|twitter-card.jpg|twitter-card.webp|whatsapp-preview.jpg|whatsapp-preview.webp|star.svg|site.webmanifest)",
       "headers": [
         {
           "key": "Cache-Control",
