@@ -75,7 +75,7 @@ export default function UserGuideView({ onNavigate }) {
                 <strong>📝 Instrumentos:</strong> Acceso a los 5 formularios dinámicos de recolección de datos estandarizados.
               </li>
               <li className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <strong>📊 Analítica Práxica:</strong> Dashboard estadístico con gráficos en tiempo real (Software Libre vs Privativo, Mapeo PES). <span className="text-red-700 font-semibold">(Módulo protegido con clave de seguridad investigativa: Praxis_Marx_2026)</span>.
+                <strong>📊 Analítica Práxica:</strong> Dashboard estadístico con gráficos en tiempo real (Software Libre vs Privativo, Mapeo PES). <span className="text-red-700 font-semibold">(Acceso protegido)</span>.
               </li>
               <li className="p-3 bg-slate-50 rounded-xl border border-slate-100">
                 <strong>🧠 Intérprete Dialéctico:</strong> Motor cualitativo que sintetiza contradicciones y genera el análisis para el Momento III.
@@ -161,7 +161,7 @@ export default function UserGuideView({ onNavigate }) {
                 <strong>Explorador de Tablas y Exportación:</strong> Permite filtrar cualquier campo por palabra clave y exportar toda la base en formato JSON estructurado.
               </li>
               <li>
-                <strong>Acceso Blindado:</strong> Protegido con la clave institucional <code className="font-mono text-red-600">Praxis_Marx_2026</code>.
+                <strong>Acceso Blindado:</strong> Módulo con acceso protegido para el investigador y personal autorizado.
               </li>
             </ul>
           </div>

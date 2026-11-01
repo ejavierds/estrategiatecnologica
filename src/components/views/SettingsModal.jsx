@@ -289,7 +289,7 @@ export default function SettingsModal({ isOpen, onClose, onDataReset }) {
         {/* Pie del Modal */}
         <div className="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between">
           <span className="text-[11px] text-slate-400">
-            Protegido con contraseña investigativa: <code className="font-mono text-slate-600">Praxis_Marx_2026</code>
+            Acceso protegido mediante credencial investigativa.
           </span>
           <button
             onClick={onClose}

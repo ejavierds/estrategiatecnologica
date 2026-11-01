@@ -36,11 +36,8 @@ Por criterios de rigurosidad metodológica, custodia de datos y preservación de
 *   **📊 Analítica Práxica (Dashboard Estadístico)**
 *   **⚙️ Configuración de la Base de Datos y Parámetros de Sincronización**
 
-**Contraseña Oficial:**
-```
-Praxis_Marx_2026
-```
-*(Configurada en las variables de entorno de producción como `VITE_DASHBOARD_PASSWORD`)*.
+**Control de Acceso:**
+Acceso protegido mediante credencial investigativa confidencial *(definida en la variable de entorno `VITE_DASHBOARD_PASSWORD`)*.
 
 ---
 
@@ -114,7 +111,7 @@ npm run build
         *   `VITE_APP_URL`: `https://estrategiatecnologica.vercel.app`
         *   `VITE_GAS_API_URL`: URL del Web App de sincronización remota
         *   `VITE_SPREADSHEET_ID`: `1pTxVBSWoSmOH02h9ehrNTJJFAgNpcFlueYckdXxGXec`
-        *   `VITE_DASHBOARD_PASSWORD`: `Praxis_Marx_2026`
+        *   `VITE_DASHBOARD_PASSWORD`: Credencial investigativa confidencial
 
 ---
 

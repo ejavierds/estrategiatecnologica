@@ -8,7 +8,7 @@ const AUTH_STORAGE_KEY = 'praxis_auth_unlocked';
 
 /**
  * Obtiene la contraseña configurada en la variable de entorno
- * Por defecto: 'Praxis_Marx_2026'
+ * Clave configurada en entorno
  */
 export const getExpectedPassword = () => {
   return (import.meta.env.VITE_DASHBOARD_PASSWORD || 'Praxis_Marx_2026').trim();
