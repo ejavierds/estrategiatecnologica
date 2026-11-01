@@ -4,9 +4,57 @@
  * Investigador: Ing. Edery Javier Rodríguez Alvarado
  */
 
-import { INITIAL_DATA, SPREADSHEET_ID } from '../data/initialData';
+import { INITIAL_DATA, DEMO_DATA, EMPTY_DATA, SPREADSHEET_ID } from '../data/initialData';
 
 const STORAGE_KEY_API_URL = 'praxis_iribarren_remote_url';
+export const STORAGE_KEY_SIMULATION = 'praxis_simulation_active';
+
+/**
+ * Comprueba si el modo de simulación demostrativa está activo
+ */
+export function isSimulationActive() {
+  try {
+    return localStorage.getItem(STORAGE_KEY_SIMULATION) === 'true';
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
+ * Cargar datos ficticios demostrativos para el modo de simulación
+ */
+export function loadSimulationData() {
+  const normalizedDemo = {
+    entrevistas: (DEMO_DATA.entrevistas || []).map(r => normalizeRecord('entrevista', r)),
+    grupos_focales: (DEMO_DATA.grupos_focales || []).map(r => normalizeRecord('grupo_focal', r)),
+    etnografia: (DEMO_DATA.etnografia || []).map(r => normalizeRecord('etnografia', r)),
+    auditoria: (DEMO_DATA.auditoria || []).map(r => normalizeRecord('auditoria', r)),
+    mapeo_actores: (DEMO_DATA.mapeo_actores || []).map(r => normalizeRecord('mapeo_actores', r)),
+  };
+  saveLocalRecords(normalizedDemo);
+  try {
+    localStorage.setItem(STORAGE_KEY_SIMULATION, 'true');
+  } catch (e) {}
+  return normalizedDemo;
+}
+
+/**
+ * Restablecer la base de datos a cero (modo limpio sin registros)
+ */
+export function clearToZeroData() {
+  const emptyState = {
+    entrevistas: [],
+    grupos_focales: [],
+    etnografia: [],
+    auditoria: [],
+    mapeo_actores: []
+  };
+  saveLocalRecords(emptyState);
+  try {
+    localStorage.setItem(STORAGE_KEY_SIMULATION, 'false');
+  } catch (e) {}
+  return emptyState;
+}
 
 /**
  * Obtener la URL guardada del servicio remoto
@@ -231,11 +279,12 @@ function mergeRecords(remoteList = [], localList = [], instrument) {
 export function getLocalRecords() {
   try {
     const raw = localStorage.getItem('praxis_iribarren_data_v1');
-    let dataObj = INITIAL_DATA;
+    let dataObj = EMPTY_DATA;
     if (raw) {
       dataObj = JSON.parse(raw);
     } else {
-      localStorage.setItem('praxis_iribarren_data_v1', JSON.stringify(INITIAL_DATA));
+      localStorage.setItem('praxis_iribarren_data_v1', JSON.stringify(EMPTY_DATA));
+      localStorage.setItem(STORAGE_KEY_SIMULATION, 'false');
     }
 
     return {
@@ -247,7 +296,7 @@ export function getLocalRecords() {
     };
   } catch (e) {
     console.error('Error al leer datos locales:', e);
-    return INITIAL_DATA;
+    return EMPTY_DATA;
   }
 }
 
@@ -422,16 +471,8 @@ export async function pingGasEndpoint(url) {
 }
 
 /**
- * Restablecer datos a los ejemplos de muestra iniciales
+ * Restablecer datos a los ejemplos de muestra iniciales (Simulación)
  */
 export function resetToSampleData() {
-  const normalizedInitial = {
-    entrevistas: (INITIAL_DATA.entrevistas || []).map(r => normalizeRecord('entrevista', r)),
-    grupos_focales: (INITIAL_DATA.grupos_focales || []).map(r => normalizeRecord('grupo_focal', r)),
-    etnografia: (INITIAL_DATA.etnografia || []).map(r => normalizeRecord('etnografia', r)),
-    auditoria: (INITIAL_DATA.auditoria || []).map(r => normalizeRecord('auditoria', r)),
-    mapeo_actores: (INITIAL_DATA.mapeo_actores || []).map(r => normalizeRecord('mapeo_actores', r)),
-  };
-  saveLocalRecords(normalizedInitial);
-  return normalizedInitial;
+  return loadSimulationData();
 }

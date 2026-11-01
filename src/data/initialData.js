@@ -86,7 +86,21 @@ export const NIVELES_DUPLICIDAD = [
   "Nula (Interopera de manera federada y soberana)"
 ];
 
-export const INITIAL_DATA = {
+export const EMPTY_DATA = {
+  entrevistas: [],
+  grupos_focales: [],
+  etnografia: [],
+  auditoria: [],
+  mapeo_actores: []
+};
+
+export const INITIAL_DATA = EMPTY_DATA;
+
+/**
+ * Datos Demostrativos para el Modo de Simulación
+ * Permiten exhibir y explorar las gráficas y la síntesis dialéctica con casos ficticios
+ */
+export const DEMO_DATA = {
   entrevistas: [
     {
       id_registro: "ENT-0001",

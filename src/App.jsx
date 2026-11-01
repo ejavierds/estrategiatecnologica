@@ -9,7 +9,7 @@ import LegalView from './components/views/LegalView';
 import UserGuideView from './components/views/UserGuideView';
 import SettingsModal from './components/views/SettingsModal';
 import ResearcherContact from './components/common/ResearcherContact';
-import { fetchAllRecords, getLocalRecords } from './services/api';
+import { fetchAllRecords, getLocalRecords, isSimulationActive, loadSimulationData, clearToZeroData } from './services/api';
 import { Sparkles, Database, WifiOff } from 'lucide-react';
 
 export default function App() {
@@ -18,6 +18,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [syncStatus, setSyncStatus] = useState(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isSimulation, setIsSimulation] = useState(isSimulationActive());
 
   // Carga de registros (Remoto Soberano / Local)
   const loadData = useCallback(async () => {
@@ -25,6 +26,7 @@ export default function App() {
     try {
       const result = await fetchAllRecords();
       setData(result.data);
+      setIsSimulation(isSimulationActive());
       setSyncStatus({
         source: result.source,
         message: result.message || result.warning,
@@ -33,6 +35,7 @@ export default function App() {
     } catch (err) {
       console.error('Error al sincronizar datos:', err);
       setData(getLocalRecords());
+      setIsSimulation(isSimulationActive());
     } finally {
       setLoading(false);
     }
@@ -41,6 +44,18 @@ export default function App() {
   useEffect(() => {
     loadData();
   }, [loadData]);
+
+  const handleLoadSimulation = () => {
+    const simData = loadSimulationData();
+    setData(simData);
+    setIsSimulation(true);
+  };
+
+  const handleResetToZero = () => {
+    const zeroData = clearToZeroData();
+    setData(zeroData);
+    setIsSimulation(false);
+  };
 
   // Recuento de registros por instrumento para badges
   const recordsCount = {
@@ -107,6 +122,9 @@ export default function App() {
             data={data}
             onRefresh={loadData}
             loading={loading}
+            isSimulation={isSimulation}
+            onLoadSimulation={handleLoadSimulation}
+            onResetToZero={handleResetToZero}
             onNavigate={(tab) => {
               setActiveTab(tab);
               window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -117,6 +135,13 @@ export default function App() {
         {activeTab === 'interpreter' && (
           <InterpreterView
             data={data}
+            isSimulation={isSimulation}
+            onLoadSimulation={handleLoadSimulation}
+            onResetToZero={handleResetToZero}
+            onNavigate={(tab) => {
+              setActiveTab(tab);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
           />
         )}
 
@@ -148,6 +173,9 @@ export default function App() {
         isOpen={isSettingsOpen}
         onClose={() => setIsSettingsOpen(false)}
         onDataReset={loadData}
+        isSimulation={isSimulation}
+        onLoadSimulation={handleLoadSimulation}
+        onResetToZero={handleResetToZero}
       />
 
       {/* Botón Flotante de Contacto Directo con el Investigador (WhatsApp y Telegram) */}

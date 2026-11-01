@@ -17,7 +17,12 @@ import {
   Filter,
   CheckCircle2,
   FileCheck,
-  Lock
+  Lock,
+  FlaskConical,
+  RotateCcw,
+  Sparkles,
+  Info,
+  Play
 } from 'lucide-react';
 import MarxistTooltip from '../common/MarxistTooltip';
 import { SPREADSHEET_ID } from '../../data/initialData';
@@ -31,7 +36,7 @@ const ARCH_COLORS = {
   'Mixto': '#F59E0B'
 };
 
-export default function DashboardView({ data, onRefresh, loading, onNavigate }) {
+export default function DashboardView({ data, onRefresh, loading, onNavigate, isSimulation, onLoadSimulation, onResetToZero }) {
   const [authenticated, setAuthenticated] = useState(isUnlocked());
   const [selectedTable, setSelectedTable] = useState('auditoria');
   const [searchQuery, setSearchQuery] = useState('');
@@ -90,7 +95,7 @@ export default function DashboardView({ data, onRefresh, loading, onNavigate }) 
     return {
       totalGeneral,
       totalAuditoria,
-      totalInstituciones: instituciones.size || 6,
+      totalInstituciones: instituciones.size,
       pctDuplicidad,
       pctAFavor,
       totalActores
@@ -125,13 +130,16 @@ export default function DashboardView({ data, onRefresh, loading, onNavigate }) 
 
   // 3. Gráfico de Barras: Posición de Actores ante la Integración (Instrumento 5)
   const actoresChartData = useMemo(() => {
+    const list = data.mapeo_actores || [];
+    if (list.length === 0) return [];
+
     const mapping = {
       'A favor': 0,
       'Neutro / Indeciso': 0,
       'En contra': 0
     };
 
-    (data.mapeo_actores || []).forEach(item => {
+    list.forEach(item => {
       const pos = (item.posicion_ante_la_integracion || item.posicion || '').toLowerCase();
       if (pos.includes('favor')) {
         mapping['A favor']++;
@@ -209,6 +217,26 @@ export default function DashboardView({ data, onRefresh, loading, onNavigate }) 
         </div>
 
         <div className="flex items-center gap-2">
+          {isSimulation ? (
+            <button
+              onClick={onResetToZero}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs font-bold transition shadow-xs"
+              title="Restablecer la base de datos a cero [modo limpio]"
+            >
+              <RotateCcw className="w-3.5 h-3.5 text-amber-700" />
+              <span>Restablecer a Cero</span>
+            </button>
+          ) : (
+            <button
+              onClick={onLoadSimulation}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-indigo-200 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold transition shadow-xs"
+              title="Cargar datos ficticios demostrativos para exhibir analítica y gráficos"
+            >
+              <FlaskConical className="w-3.5 h-3.5 text-indigo-600" />
+              <span>Simulación Demostrativa</span>
+            </button>
+          )}
+
           <button
             onClick={onRefresh}
             disabled={loading}
@@ -241,6 +269,66 @@ export default function DashboardView({ data, onRefresh, loading, onNavigate }) 
           </button>
         </div>
       </div>
+
+      {/* Banner de Modo Simulación Activo */}
+      {isSimulation && (
+        <div className="p-4 bg-gradient-to-r from-indigo-50 via-purple-50 to-amber-50 border border-indigo-200 rounded-2xl shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-start gap-3">
+            <div className="p-2 bg-indigo-600 text-white rounded-xl shadow-xs mt-0.5 sm:mt-0">
+              <FlaskConical className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="font-extrabold text-xs text-indigo-950 uppercase tracking-wide">Modo de Simulación Activo</span>
+                <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-indigo-100 text-indigo-800 border border-indigo-200">Datos Ficticios Demostrativos</span>
+              </div>
+              <p className="text-xs text-slate-600 mt-0.5">
+                Visualizando registros ficticios contextualizados en Iribarren para evaluar gráficos, correlaciones PES y síntesis dialéctica.
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={onResetToZero}
+            className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 text-slate-800 text-xs font-bold transition shadow-xs shrink-0"
+          >
+            <RotateCcw className="w-3.5 h-3.5 text-slate-600" />
+            <span>Restablecer a Cero</span>
+          </button>
+        </div>
+      )}
+
+      {/* Tarjeta de Bienvenida cuando la Base de Datos está en Cero */}
+      {!isSimulation && kpis.totalGeneral === 0 && (
+        <div className="p-6 bg-white rounded-3xl border border-slate-200 shadow-xs flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-2 text-center md:text-left">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Base de Datos en Cero (Modo Limpio Operativo)
+            </div>
+            <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+              Panel Inicial de Analítica Práxica Dialéctica
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
+              La base de datos se encuentra en cero sin registros previos. Puedes comenzar a registrar instrumentos empíricos en tiempo real o activar el <strong>Modo de Simulación</strong> para exhibir los datos ficticios demostrativos en todos los gráficos e interpretaciones.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center gap-2.5 shrink-0">
+            <button
+              onClick={onLoadSimulation}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition shadow-md shadow-indigo-100"
+            >
+              <FlaskConical className="w-4 h-4" />
+              <span>🧪 Activar Simulación Demostrativa</span>
+            </button>
+            <button
+              onClick={() => onNavigate && onNavigate('instruments')}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition shadow-xs"
+            >
+              <span>📝 Aplicar Instrumentos</span>
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Tarjetas de Métricas Clave (KPIs) */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
@@ -333,7 +421,20 @@ export default function DashboardView({ data, onRefresh, loading, onNavigate }) 
                 </PieChart>
               </ResponsiveContainer>
             ) : (
-              <div className="text-xs text-slate-400">Sin datos registrados de auditoría</div>
+              <div className="flex flex-col items-center justify-center p-6 text-center text-slate-400 space-y-1.5">
+                <Database className="w-8 h-8 text-slate-300 stroke-1" />
+                <p className="text-xs font-semibold text-slate-500">Base en cero: Sin auditorías registradas</p>
+                <p className="text-[11px] text-slate-400 max-w-xs">Aplica el Instrumento 4 de Auditoría o activa la simulación.</p>
+                {onLoadSimulation && !isSimulation && (
+                  <button
+                    onClick={onLoadSimulation}
+                    className="mt-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 hover:underline flex items-center gap-1"
+                  >
+                    <FlaskConical className="w-3.5 h-3.5" />
+                    Ver con datos de simulación
+                  </button>
+                )}
+              </div>
             )}
           </div>
 
@@ -372,7 +473,20 @@ export default function DashboardView({ data, onRefresh, loading, onNavigate }) 
                 </BarChart>
               </ResponsiveContainer>
             ) : (
-              <div className="text-xs text-slate-400">Sin actores mapeados</div>
+              <div className="flex flex-col items-center justify-center h-full p-6 text-center text-slate-400 space-y-1.5">
+                <Users className="w-8 h-8 text-slate-300 stroke-1" />
+                <p className="text-xs font-semibold text-slate-500">Base en cero: Sin actores mapeados</p>
+                <p className="text-[11px] text-slate-400 max-w-xs">Aplica el Instrumento 5 de Mapeo de Actores PES o activa la simulación.</p>
+                {onLoadSimulation && !isSimulation && (
+                  <button
+                    onClick={onLoadSimulation}
+                    className="mt-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 hover:underline flex items-center gap-1"
+                  >
+                    <FlaskConical className="w-3.5 h-3.5" />
+                    Ver con datos de simulación
+                  </button>
+                )}
+              </div>
             )}
           </div>
 
@@ -407,7 +521,20 @@ export default function DashboardView({ data, onRefresh, loading, onNavigate }) 
               </BarChart>
             </ResponsiveContainer>
           ) : (
-            <div className="text-xs text-slate-400">Sin registros etnográficos disponibles</div>
+            <div className="flex flex-col items-center justify-center h-full p-6 text-center text-slate-400 space-y-1.5">
+              <Layers className="w-8 h-8 text-slate-300 stroke-1" />
+              <p className="text-xs font-semibold text-slate-500">Base en cero: Sin registros etnográficos</p>
+              <p className="text-[11px] text-slate-400 max-w-xs">Aplica el Instrumento 3 de Observación Participante o activa la simulación.</p>
+              {onLoadSimulation && !isSimulation && (
+                <button
+                  onClick={onLoadSimulation}
+                  className="mt-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 hover:underline flex items-center gap-1"
+                >
+                  <FlaskConical className="w-3.5 h-3.5" />
+                  Ver con datos de simulación
+                </button>
+              )}
+            </div>
           )}
         </div>
       </div>
@@ -628,8 +755,23 @@ export default function DashboardView({ data, onRefresh, loading, onNavigate }) 
                 ))
               ) : (
                 <tr>
-                  <td colSpan={7} className="text-center py-8 text-slate-400">
-                    No se encontraron registros en esta sección.
+                  <td colSpan={7} className="text-center py-10 px-4">
+                    <div className="flex flex-col items-center justify-center space-y-2">
+                      <Database className="w-8 h-8 text-slate-300 stroke-1" />
+                      <p className="text-xs font-bold text-slate-600">No hay registros en esta sección (Base en Cero)</p>
+                      <p className="text-[11px] text-slate-400 max-w-sm">
+                        Ingresa un nuevo registro desde el módulo de Instrumentos o activa el modo de simulación demostrativa.
+                      </p>
+                      {onLoadSimulation && !isSimulation && (
+                        <button
+                          onClick={onLoadSimulation}
+                          className="mt-1 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 text-xs font-bold hover:bg-indigo-100 transition"
+                        >
+                          <FlaskConical className="w-3.5 h-3.5" />
+                          <span>Cargar Simulación Demostrativa</span>
+                        </button>
+                      )}
+                    </div>
                   </td>
                 </tr>
               )}

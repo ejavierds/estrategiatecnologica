@@ -14,10 +14,12 @@ import {
   Users, 
   Cpu, 
   Zap,
-  Download
+  Download,
+  FlaskConical,
+  RotateCcw
 } from 'lucide-react';
 
-export default function InterpreterView({ data }) {
+export default function InterpreterView({ data, isSimulation, onLoadSimulation, onResetToZero, onNavigate }) {
   const [analyzing, setAnalyzing] = useState(false);
   const [synthesisReport, setSynthesisReport] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -31,6 +33,18 @@ export default function InterpreterView({ data }) {
       const etnografia = data.etnografia || [];
       const auditoria = data.auditoria || [];
       const actores = data.mapeo_actores || [];
+
+      const totalSources = entrevistas.length + grupos.length + etnografia.length + auditoria.length + actores.length;
+
+      if (totalSources === 0) {
+        setSynthesisReport({
+          isEmpty: true,
+          generatedAt: new Date().toLocaleString('es-VE'),
+          totalSources: 0
+        });
+        setAnalyzing(false);
+        return;
+      }
 
       // Análisis de palabras clave y frecuencias cualitativas
       let allText = '';
@@ -232,8 +246,45 @@ ${synthesisReport.actionGuidelines.map((g, idx) => `${idx + 1}. ${g}`).join('\n'
         </div>
       )}
 
+      {/* Reporte Dialéctico Vacío (Base en cero) */}
+      {synthesisReport && synthesisReport.isEmpty && (
+        <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 text-center max-w-2xl mx-auto space-y-4 shadow-xs">
+          <div className="w-16 h-16 bg-amber-50 text-amber-600 rounded-3xl mx-auto flex items-center justify-center border border-amber-100 shadow-xs">
+            <FlaskConical className="w-8 h-8" />
+          </div>
+          <h3 className="text-lg sm:text-xl font-bold text-slate-900">
+            Base de Datos en Cero: Sin Fuentes Empíricas para Sintetizar
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+            No se han registrado datos cualitativos en ninguno de los 5 instrumentos de investigación. Para generar la síntesis dialéctica, puedes aplicar los instrumentos de campo o activar el <strong>Modo de Simulación</strong> con datos representativos de Barquisimeto.
+          </p>
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+            {onLoadSimulation && (
+              <button
+                onClick={() => {
+                  onLoadSimulation();
+                  setTimeout(() => generateDialecticalSynthesis(), 300);
+                }}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition shadow-sm"
+              >
+                <FlaskConical className="w-4 h-4" />
+                <span>🧪 Cargar Simulación Demostrativa y Sintetizar</span>
+              </button>
+            )}
+            {onNavigate && (
+              <button
+                onClick={() => onNavigate('instruments')}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold transition"
+              >
+                <span>📝 Ir a Instrumentos de Campo</span>
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Reporte Dialéctico Generado */}
-      {synthesisReport && (
+      {synthesisReport && !synthesisReport.isEmpty && (
         <div className="space-y-8 animate-in slide-in-from-bottom-4 duration-300">
           
           {/* Barra de Acciones del Reporte */}
